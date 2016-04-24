@@ -23,9 +23,9 @@ namespace SDII
             a = el.Attribute("sol"); if (a != null) sol = a.Value;
             a = el.Attribute("reg"); if (a != null) reg = a.Value;
             a = el.Attribute("cnf"); if (a != null) cnf = a.Value;
-            a = el.Attribute("com"); if (a != null) com = a.Value;
             a = el.Attribute("siz"); if (a != null) siz = Int64.Parse(a.Value);
             a = el.Attribute("nte"); if (a != null) nte = Int32.Parse(a.Value);
+            a = el.Attribute("com"); if (a != null) com = a.Value;
         }
         // Сохранение теста в CSV-строке
         public string ToCSV()
