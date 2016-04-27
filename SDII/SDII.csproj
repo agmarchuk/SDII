@@ -33,7 +33,7 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestFrame.cs" />
+    <Compile Include="ProbeFrame.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

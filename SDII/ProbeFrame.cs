@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace SDII
 {
-    public class TestFrame
+    public class ProbeFrame
     {
         public string tsk = "", sol = "", reg = "", cnf = "", com = "";
         public long siz = 0L;
@@ -16,7 +16,7 @@ namespace SDII
         DateTime dte = DateTime.Now;
 
         // Инициализация загрузкой XML-элементом
-        public TestFrame(XElement el)
+        public ProbeFrame(XElement el)
         {
             XAttribute a;
             a = el.Attribute("tsk"); if (a != null) tsk = a.Value;
