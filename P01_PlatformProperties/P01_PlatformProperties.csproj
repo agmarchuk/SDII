@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EBF7CD17-CA66-4B5D-8D0B-98897686AD70}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>P01_PlatformProperties</RootNamespace>
     <AssemblyName>P01_PlatformProperties</AssemblyName>
@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,8 +46,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="res.txt" />
+    <Content Include="tests.xml" />
+    <Content Include="tests0.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SDII\SDII.csproj">
-      <Project>{4251dff3-1130-4d33-a611-74bf553d6aed}</Project>
+      <Project>{004f4214-55da-4598-af5b-23f509761815}</Project>
       <Name>SDII</Name>
     </ProjectReference>
   </ItemGroup>

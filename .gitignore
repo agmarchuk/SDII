@@ -214,3 +214,5 @@ pip-log.txt
 #Mr Developer
 /Databases/*.pac
 
+/P01_PlatformProperties/tests.xml
+/P01_PlatformProperties/res.txt
