@@ -1,4 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <tests>
-  <ProbeFrame sol="Arr" siz="10000000" nte="100000" />
+  <ProbeFrame sol="Arr" siz="50000000" nte="10000000" />
 </tests> 
