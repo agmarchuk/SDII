@@ -17,9 +17,9 @@ namespace P01_PlatformProperties
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             string path = @"../../";
             TextWriter res = new StreamWriter(new FileStream(path + "res.txt", FileMode.Append, FileAccess.Write));
-            if (true || !System.IO.File.Exists(path + "tests.xml")) System.IO.File.Copy(path + "tests0.xml", path + "tests.xml", true);
+            if (!System.IO.File.Exists(path + "tests.xml")) System.IO.File.Copy(path + "tests0.xml", path + "tests.xml", true);
             XElement xcnf = XElement.Load(path + "tests.xml");
-            if (true || !System.IO.File.Exists(path + "../common.xml")) System.IO.File.Copy(path + "../common0.xml", path + "../common.xml", true);
+            if (!System.IO.File.Exists(path + "../common.xml")) System.IO.File.Copy(path + "../common0.xml", path + "../common.xml", true);
             XElement xcommon = XElement.Load(path + "../common.xml");
             xcommon.Add(xcnf);
             Random rnd;
