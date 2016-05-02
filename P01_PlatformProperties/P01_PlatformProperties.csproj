@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="res.txt" />
-    <Content Include="tests.xml" />
+    <Content Include="tests.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SDII\SDII.csproj">

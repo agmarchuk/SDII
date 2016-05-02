@@ -215,3 +215,4 @@ pip-log.txt
 /Databases/*.pac
 
 /common.xml
+/Databases/*.bin
