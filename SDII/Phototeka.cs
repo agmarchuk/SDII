@@ -41,5 +41,81 @@ namespace Polar.Data
 
             }
         }
+
+        public IEnumerable<Person> GeneratePersons()
+        {
+            Random rnd = new Random(seed);
+
+            for (int i = 0; i < npersons; i++)
+            {
+                yield return new Person()
+                {
+                    Id = i.ToString(),
+                    Name = "Пупкин" + i + "_" + rnd.Next(npersons),
+                    Age = 20 + rnd.Next(80)
+                };
+            }
+        }
+        public IEnumerable<Photo> GeneratePhotos()
+        {
+            Random rnd = new Random(seed);
+
+            for (int i = 0; i < nphotos; i++)
+            {
+                yield return new Photo()
+                {
+                    Id = i.ToString(),
+                    Name = "DSP" + i
+                };
+            }
+        }
+        public IEnumerable<Reflection> GenerateReflections()
+        {
+            Random rnd = new Random(seed);
+
+            for (int i = 0; i < npersons; i++)
+            {
+                yield return new Reflection()
+                {
+                    Id = i.ToString(),
+                    PersonId = rnd.Next(npersons - 1).ToString(),
+                    PhotoId = rnd.Next(nphotos - 1).ToString()
+                };
+            }
+        }
+
+        public IEnumerable<Tuple<string, string, object>> GenerateTriples()
+        {
+            Random rnd = new Random(seed);
+            for (int i = 0; i < npersons; i++)
+            {
+                var id = i.ToString();
+                yield return Tuple.Create(id, "a", (object)"person");
+                yield return Tuple.Create(id, "name", (object)("Пупкин" + i + "_" + rnd.Next(npersons)));
+                    //new XElement("age", 20 + rnd.Next(80)));
+            }
+            throw new NotImplementedException();
+        }
+    public class Person
+{
+    public string Id { get; set; }
+    public int Age { get; set; }
+    public string Name { get; set; }
+    public virtual ICollection<Photo> Photos { get; set; }
+}
+
+public class Photo
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public virtual ICollection<Person> Persons { get; set; }
+}
+
+public class Reflection
+{
+    public string Id { get; set; }
+    public string PersonId { get; set; }
+    public string PhotoId { get; set; }
+}
     }
 }
