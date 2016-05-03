@@ -26,7 +26,7 @@ namespace Polar.Data
             for (int i = 0; i < npersons; i++)
             {
                 yield return new XElement("person", new XAttribute("id", i),
-                    new XElement("name", "Pupkin" + rnd.Next(npersons)),
+                    new XElement("name", "Pupkin" + i + "_" + rnd.Next(npersons)),
                     new XElement("age", 20 + rnd.Next(80)));
             }
         }
@@ -53,7 +53,7 @@ namespace Polar.Data
             for (int i = 0; i < npersons; i++)
             {
                 yield return Tuple.Create(i, "a", "person");
-                yield return Tuple.Create(i, "name", "Pupkin" + rnd.Next(npersons));
+                yield return Tuple.Create(i, "name", "Pupkin" + i + "_" + rnd.Next(npersons));
                 yield return Tuple.Create(i, "age", (20 + rnd.Next(80)).ToString());
             }
             for (int i = npersons; i < nphotos+ npersons; i++)

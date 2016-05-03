@@ -49,7 +49,7 @@ namespace P04_SimpleTripleStore_Phototeka
                     for (int i = 0; i < probe.nte; i++)
                     {
                         int id = rnd.Next(0, (int) probe.siz - 1);
-                        sum += simpleTripleStore.GetDirects(id).Count();
+                        sum += Convert.ToInt32(simpleTripleStore.GetDirects(id).FirstOrDefault(tuple => tuple.Item1=="age" ).Item2);
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
@@ -65,7 +65,8 @@ namespace P04_SimpleTripleStore_Phototeka
                     for (int i = 0; i < probe.nte; i++)
                     {
                         int id = rnd.Next(0, (int) probe.siz - 1);
-                        sum += (int) simpleTripleStore.GetSubjects("name", "Pupkin" + id/10).Count();
+                        string namePrefix = "Pupkin" + id/10;
+                        sum += (int) simpleTripleStore.GetSubjects("a", "person").Select(personId=> simpleTripleStore.GetObject(personId, "name").FirstOrDefault()).Count(name => name.StartsWith(namePrefix));
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
