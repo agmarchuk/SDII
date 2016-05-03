@@ -17,11 +17,6 @@ namespace P03_SQL_Phototeka
             DbProviderFactory fact = new System.Data.SQLite.SQLiteFactory(); //DbProviderFactories.GetFactory("System.Data.SQLite");
             this.connection = fact.CreateConnection();
             this.connection.ConnectionString = connectionstring;
-            //using (DbConnection cnn = fact.CreateConnection())
-            //{
-            //    cnn.ConnectionString = "Data Source=D:\\home\\dev2012\\PolarLearning\\Task08SimpleGraph\\test.db3";
-            //    cnn.Open();
-            //    connection = cnn;
         }
         public void PrepareToLoad()
         {
@@ -104,34 +99,36 @@ CREATE INDEX reflection_indoc ON reflection(in_doc);";
             Console.WriteLine("Count()={0}", obj);
             connection.Close();
         }
-        public void SelectById(int id, string table)
+        public object[] SelectById(int id, string table)
         {
             connection.Open();
             var comm = connection.CreateCommand();
             comm.CommandText = "SELECT * FROM " + table + " WHERE id=" + id + ";";
+            object[] res = null;
             var reader = comm.ExecuteReader();
             while (reader.Read())
             {
-                var oname = reader.GetValue(1);
-                string name = reader.GetString(1);
-                Console.WriteLine("id={0} name={1} fd={2}", reader.GetValue(0), reader.GetValue(1), reader.GetValue(2));
+                int ncols = reader.FieldCount;
+                res = new object[ncols];
+                for (int i = 0; i < ncols; i++) res[i] = reader.GetValue(i);
             }
             connection.Close();
+            return res;
         }
-        public void SearchByName(string searchstring, string table)
+        public int SearchByName(string searchstring, string table)
         {
             connection.Open();
             var comm = connection.CreateCommand();
             //comm.CommandText = "SELECT * FROM " + table + " WHERE name LIKE N'" + searchstring + "%'";
             comm.CommandText = "SELECT * FROM " + table + " WHERE name LIKE '" + searchstring + "%'";
+            int sum = 0;
             var reader = comm.ExecuteReader();
             while (reader.Read())
             {
-                var oname = reader.GetValue(1);
-                string name = reader.GetString(1);
-                Console.WriteLine("id={0} name={1} fd={2}", reader.GetValue(0), reader.GetValue(1), reader.GetValue(2));
+                sum++;
             }
             connection.Close();
+            return sum;
         }
         public int GetRelationByPerson(int id)
         {
@@ -146,7 +143,6 @@ CREATE INDEX reflection_indoc ON reflection(in_doc);";
                 cnt++;
             }
             connection.Close();
-            //Console.WriteLine("cnt={0}", cnt);
             return cnt;
         }
 

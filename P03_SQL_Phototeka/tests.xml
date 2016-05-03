@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<tests siz="80000" nte="200" >
+  <ProbeFrame tsk="LoadI" sol="sqlite_load"/>
+</tests> 

@@ -26,7 +26,7 @@ namespace Polar.Data
             for (int i = 0; i < npersons; i++)
             {
                 yield return new XElement("person", new XAttribute("id", i),
-                    new XElement("name", "Пупкин" + i + "_" + rnd.Next(npersons)),
+                    new XElement("name", "Pupkin" + i + "_" + rnd.Next(npersons)),
                     new XElement("age", 20 + rnd.Next(80)));
             }
         }
