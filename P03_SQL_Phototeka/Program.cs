@@ -48,50 +48,56 @@ namespace P03_SQL_Phototeka
                     Console.WriteLine("Load ok."); // 10000: 14.9 сек.
                     res.WriteLine(probe.ToCSV());
                 }
+                else if (probe.sol == "sqlite_SelectById")
+                {
+                    rnd = new Random(777777777);
+                    sw.Restart();
+                    long sum = 0;
+                    for (int i = 0; i < probe.nte; i++)
+                    {
+                        int id = rnd.Next(0, (int)probe.siz - 1);
+                        sum += (int)(db.SelectById(id, "person")[2]);
+                    }
+                    sw.Stop();
+                    probe.tim = sw.ElapsedMilliseconds;
+                    probe.sum = sum;
+                    Console.WriteLine("SelectById ok. Duration={0}", sw.ElapsedMilliseconds); // 7
+                    res.WriteLine(probe.ToCSV());
+                }
+                else if (probe.sol == "sqlite_SearchByName")
+                {
+                    rnd = new Random(777777777);
+                    sw.Restart();
+                    long sum = 0;
+                    for (int i = 0; i < probe.nte; i++)
+                    {
+                        int id = rnd.Next(0, (int)probe.siz - 1);
+                        sum += (int)(db.SearchByName("Pupkin" + id/10, "person"));
+                    }
+                    sw.Stop();
+                    probe.tim = sw.ElapsedMilliseconds;
+                    probe.sum = sum;
+                    Console.WriteLine("SearchByName ok. Duration={0}", sw.ElapsedMilliseconds); // 7
+                    res.WriteLine(probe.ToCSV());
+                }
+                else if (probe.sol == "sqlite_GetRelationByPerson")
+                {
+                    rnd = new Random(777777777);
+                    sw.Restart();
+                    long sum = 0;
+                    for (int i = 0; i < probe.nte; i++)
+                    {
+                        int id = rnd.Next(0, (int)probe.siz - 1);
+                        sum += (int)(db.GetRelationByPerson(id));
+                    }
+                    sw.Stop();
+                    probe.tim = sw.ElapsedMilliseconds;
+                    probe.sum = sum;
+                    Console.WriteLine("GetRelationByPerson ok. Duration={0}", sw.ElapsedMilliseconds); // 7
+                    res.WriteLine(probe.ToCSV());
+                }
                 else if (probe.sol == "unused")
                 {
-                    sw.Restart();
-                    db.SelectById(2870, "person");
-                    //db.SelectById(1309, "person");
-                    sw.Stop();
-                    Console.WriteLine("SelectById ok. Duration={0}", sw.ElapsedMilliseconds); // 7
-
-                    sw.Restart();
-                    int sum = db.SearchByName("Pupkin999", "person");
-                    sw.Stop();
-                    Console.WriteLine("SearchByName ok. sum={1} Duration={1}", sum, sw.ElapsedMilliseconds); // 7
-
-                    sw.Restart();
-                    db.GetRelationByPerson(2870);
-                    //db.GetRelation(1309, "reflected");
-                    sw.Stop();
-                    Console.WriteLine("GetRelation ok. Duration={0}", sw.ElapsedMilliseconds); // 91
-
-                    // Проверка серии портретов
-                    rnd = new Random(999999); int i = 0;
-                    sw.Restart();
-                    for (; i < 100; i++) db.GetRelationByPerson(rnd.Next(10000));
-                    sw.Stop();
-                    System.Console.WriteLine("GetPortraitById OK. times={0} duration={1}", i, sw.ElapsedMilliseconds); // 1227 ms. 
-
-                    // Проверка серии портретов (2) по тем же идентификаторам
-                    rnd = new Random(999999); i = 0;
-                    sw.Restart();
-                    for (; i < 100; i++) db.GetRelationByPerson(rnd.Next(10000));
-                    sw.Stop();
-                    System.Console.WriteLine("GetPortraitById OK. times={0} duration={1}", i, sw.ElapsedMilliseconds); // 43 ms. 
-
-                    //// 
-                    //Console.WriteLine("==== Динамика естественного разогрева ====");
-                    //Random rnd2 = new Random();
-                    //for (int j = 0; j < 100; j++)
-                    //{
-                    //    sw.Restart();
-                    //    for (int ii = 0; ii < 100; ii++) db.GetRelationByPerson(rnd2.Next(npersons - 1));
-                    //    sw.Stop();
-                    //    Console.Write("{0} ", sw.ElapsedMilliseconds);
-                    //}
-                    //System.Console.WriteLine(); // 
                 }
             }
             res.Close();

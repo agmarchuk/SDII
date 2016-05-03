@@ -1,4 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<tests siz="80000" nte="200" >
+<tests siz="80000">
+  <!--
   <ProbeFrame tsk="LoadI" sol="sqlite_load"/>
+  -->
+  <ProbeFrame tsk="GetItemById" sol="sqlite_SelectById" nte="1000" />
+  <ProbeFrame tsk="SearchByName" sol="sqlite_SearchByName" nte="100" />
+  <ProbeFrame tsk="GePortraitById" sol="sqlite_GetRelationByPerson" nte="1000" />
 </tests> 
