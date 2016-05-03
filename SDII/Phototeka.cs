@@ -48,24 +48,24 @@ namespace Polar.Data
             }
         }
 
-        public IEnumerable<Tuple<string, string, string>> GenerateRDF()
+        public IEnumerable<Tuple<int, string, string>> GenerateRDF()
         {
             for (int i = 0; i < npersons; i++)
             {
-                yield return Tuple.Create(i.ToString(), "a", "person");
-                yield return Tuple.Create(i.ToString(), "name", "Пупкин" + i + "_" + rnd.Next(npersons));
-                yield return Tuple.Create(i.ToString(), "age", (20 + rnd.Next(80)).ToString());
+                yield return Tuple.Create(i, "a", "person");
+                yield return Tuple.Create(i, "name", "Пупкин" + i + "_" + rnd.Next(npersons));
+                yield return Tuple.Create(i, "age", (20 + rnd.Next(80)).ToString());
             }
             for (int i = 0; i < nphotos; i++)
             {
-                yield return Tuple.Create(i.ToString(), "a", "photo_doc");
-                yield return Tuple.Create(i.ToString(), "name", "DSP" + i);
+                yield return Tuple.Create(i, "a", "photo_doc");
+                yield return Tuple.Create(i, "name", "DSP" + i);
             }
             for (int i = 0; i < nreflections; i++)
             {
-                yield return Tuple.Create(i.ToString(), "a", "reflection");
-                yield return Tuple.Create(i.ToString(), "reflected", rnd.Next(npersons - 1).ToString());
-                yield return Tuple.Create(i.ToString(), "in_doc", rnd.Next(nphotos - 1).ToString());
+                yield return Tuple.Create(i, "a", "reflection");
+                yield return Tuple.Create(i, "reflected", rnd.Next(npersons - 1).ToString());
+                yield return Tuple.Create(i, "in_doc", rnd.Next(nphotos - 1).ToString());
             }
         }
     }
