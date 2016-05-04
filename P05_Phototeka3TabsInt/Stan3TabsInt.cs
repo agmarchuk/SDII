@@ -11,10 +11,12 @@ namespace P05_Phototeka3TabsInt
 {
     public class Stan3TabsInt
     {
-        private string path;
+        //private string path;
         private TableView tab_person, tab_photo_doc, tab_reflection;
         private IndexKeyImmutable<int> ind_arr_person, ind_arr_photo_doc, ind_arr_reflected, ind_arr_in_doc;
         private IndexDynamic<int, IndexKeyImmutable<int>> index_person, index_photo_doc, index_reflected, index_in_doc;
+        private IndexViewImmutable<string> ind_arr_person_name;
+        private IndexDynamic<string, IndexViewImmutable<string>> index_person_name;
         public Stan3TabsInt(string path)
         {
             PType tp_person = new PTypeRecord(
@@ -91,6 +93,7 @@ namespace P05_Phototeka3TabsInt
                 IndexArray = ind_arr_in_doc,
                 KeyProducer = in_doc_keyproducer
             };
+            //Func<object, string> name_keyproducer = v => 
         }
         public void Clear() { tab_person.Clear(); tab_photo_doc.Clear(); tab_reflection.Clear(); }
         public void Build(IEnumerable<XElement> records)

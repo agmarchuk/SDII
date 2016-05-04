@@ -63,7 +63,7 @@ namespace P05_Phototeka3TabsInt
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
                     probe.sum = sum;
-                    Console.WriteLine("SelectById ok. Duration={0}", sw.ElapsedMilliseconds); // 7
+                    Console.WriteLine("SelectById ok. Duration={0}", sw.ElapsedMilliseconds); // 46 (1000)
                     res.WriteLine(probe.ToCSV());
                 }
                 else if (probe.sol == "simpleTripleStore_SearchByName")
