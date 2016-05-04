@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <tests siz="40000">
  <!--
-  -->
  <ProbeFrame tsk="LoadI" sol="simpleTripleStore_load"/>
   <ProbeFrame tsk="SearchByName" sol="simpleTripleStore_SearchByName" nte="100" />
   <ProbeFrame tsk="GetItemById" sol="simpleTripleStore_SelectById" nte="1000" />
   <ProbeFrame tsk="GePortraitById" sol="simpleTripleStore_GetRelationByPerson" nte="1000" />
+  -->
 </tests> 
