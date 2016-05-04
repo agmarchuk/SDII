@@ -120,7 +120,10 @@ namespace P05_Phototeka3TabsInt
                     tab_reflection.AppendValue(new object[] { code, reflected, in_doc });
                 }
             }
-            // Построение индексов
+        }
+        // Построение индексов
+        public void BuildIndexes()
+        {
             ind_arr_person.Build();
             ind_arr_photo_doc.Build();
             ind_arr_reflected.Build();
