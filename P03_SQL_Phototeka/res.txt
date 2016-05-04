@@ -28,3 +28,7 @@ LoadI,sqlite_load,,myNote4G64W,40000,0,11172,3167,-1,-1,-1,-1,0,2016-05-03T22:11
 GetItemById,sqlite_SelectById,,myNote4G64W,40000,1000,-1,-1,-1,2235,-1,-1,59074,2016-05-03T22:11:53,""
 SearchByName,sqlite_SearchByName,,myNote4G64W,40000,100,-1,-1,-1,1824,-1,-1,4100,2016-05-03T22:11:55,""
 GePortraitById,sqlite_GetRelationByPerson,,myNote4G64W,40000,1000,-1,-1,-1,3585,-1,-1,6098,2016-05-03T22:11:57,""
+LoadI,sqlite_load,,myNote4G64W,40000,0,13411,2914,-1,-1,-1,-1,0,2016-05-04T16:16:43,""
+GetItemById,sqlite_SelectById,,myNote4G64W,40000,1000,-1,-1,-1,2688,-1,-1,59074,2016-05-04T16:17:00,""
+SearchByName,sqlite_SearchByName,,myNote4G64W,40000,100,-1,-1,-1,1817,-1,-1,4100,2016-05-04T16:17:03,""
+GePortraitById,sqlite_GetRelationByPerson,,myNote4G64W,40000,1000,-1,-1,-1,1560,-1,-1,6098,2016-05-04T16:17:04,""
