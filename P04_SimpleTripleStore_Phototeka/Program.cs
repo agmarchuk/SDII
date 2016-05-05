@@ -33,7 +33,7 @@ namespace P04_SimpleTripleStore_Phototeka
                 int npersons = (int) probe.siz;
                 if (probe.sol == "simpleTripleStore_load")
                 {
-                    Directory.Delete(path + "../Databases/simple triple store", true);
+                    // Directory.Delete(path + "../Databases/simple triple store", true);
                     sw.Restart();
                     Polar.Data.Phototeka generator = new Polar.Data.Phototeka(npersons, 777777);
                     simpleTripleStore.Build(generator.GenerateRDF());
