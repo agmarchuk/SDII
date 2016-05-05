@@ -25,7 +25,7 @@ namespace P04_SimpleTripleStore_Phototeka
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
             SimpleTripleStore.SimpleTripleStore simpleTripleStore =
-                new SimpleTripleStore.SimpleTripleStore(path + "../Databases/simple triple store",
+                new SimpleTripleStore.SimpleTripleStore(path + "../Databases/simple triple store/",
                     1000*1000);
             foreach (XElement xprobe in xcnf.Elements())
             {

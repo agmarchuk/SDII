@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <tests>
  
-  <!-- <ProbeFrame sol="Arr" siz="50000000" nte="10000000" />
+  <ProbeFrame sol="Arr" siz="50000000" nte="10000000" />
   <ProbeFrame sol="MStream" siz="50000000" nte="10000000" />
-  <ProbeFrame sol="File" siz="50000000" nte="10000000" />-->
+  <ProbeFrame sol="File" siz="50000000" nte="10000000" />
+  <!--
   <ProbeFrame sol="ColdScanFile" siz="50000000" nte="10000000" />
   <ProbeFrame sol="ColdRandFile" siz="50000000" nte="10000" />
   <ProbeFrame sol="ColdRandFile" siz="50000000" nte="1000" />
-  
-  <!--<ProbeFrame sol="File" siz="500000000" nte="10000" />-->
+  -->
 </tests> 

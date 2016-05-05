@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio Express 2012 for Web
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01_PlatformProperties", "P01_PlatformProperties\P01_PlatformProperties.csproj", "{EBF7CD17-CA66-4B5D-8D0B-98897686AD70}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDII", "SDII\SDII.csproj", "{004F4214-55DA-4598-AF5B-23F509761815}"
@@ -15,6 +13,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P03_SQL_Phototeka", "P03_SQL_Phototeka\P03_SQL_Phototeka.csproj", "{19C1CF0B-C3CF-4179-BD72-E1E1E3AFB7E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P04_SimpleTripleStore_Phototeka", "P04_SimpleTripleStore_Phototeka\P04_SimpleTripleStore_Phototeka.csproj", "{9D572001-A943-4B4F-98C4-FA9C9A57075E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05_Phototeka3TabsInt", "P05_Phototeka3TabsInt\P05_Phototeka3TabsInt.csproj", "{FF01A51F-1052-4869-A52B-03FD1B87181F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalIndex", "..\Polar\UniversalIndex\UniversalIndex.csproj", "{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,14 @@ Global
 		{9D572001-A943-4B4F-98C4-FA9C9A57075E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D572001-A943-4B4F-98C4-FA9C9A57075E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D572001-A943-4B4F-98C4-FA9C9A57075E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF01A51F-1052-4869-A52B-03FD1B87181F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF01A51F-1052-4869-A52B-03FD1B87181F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF01A51F-1052-4869-A52B-03FD1B87181F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF01A51F-1052-4869-A52B-03FD1B87181F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
