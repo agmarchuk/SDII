@@ -75,6 +75,9 @@ namespace P05_Phototeka3TabsInt
                     {
                         int id = rnd.Next(0, (int)probe.siz - 1);
                         string namePrefix = "Pupkin" + id / 10;
+                        var ob = tabs.GetPersonsByName(namePrefix).ToArray();
+                        sum += ob.Length;
+                        sum = sum + 1 - 1;
                         //sum += (int)simpleTripleStore.GetSubjects("a", "person").Select(personId => simpleTripleStore.GetObject(personId, "name").FirstOrDefault()).Count(name => name.StartsWith(namePrefix));
                     }
                     sw.Stop();
