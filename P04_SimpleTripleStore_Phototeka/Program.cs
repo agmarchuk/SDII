@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using SDII;
+using SimpleTripleStore;
 
 namespace P04_SimpleTripleStore_Phototeka
 {
@@ -59,14 +60,22 @@ namespace P04_SimpleTripleStore_Phototeka
                 }
                 else if (probe.sol == "simpleTripleStore_SearchByName")
                 {
+
                     rnd = new Random(777777777);
+                    sw.Restart();
+
+                    WordIndex index =new WordIndex();
+                    for (int i = 0; i < probe.siz; i++)
+                        index.Insert(simpleTripleStore.GetObject(i, "name").First(), i);
+                    Console.WriteLine("build words trigrams index "+sw.ElapsedMilliseconds  );
+                    Console.WriteLine("RAM used {0} mb.", GC.GetTotalMemory(false)/1024/1024);
                     sw.Restart();
                     long sum = 0;
                     for (int i = 0; i < probe.nte; i++)
                     {
                         int id = rnd.Next(0, (int) probe.siz - 1);
                         string namePrefix = "Pupkin" + id/10;
-                        sum += (int) simpleTripleStore.GetSubjects("a", "person").Select(personId=> simpleTripleStore.GetObject(personId, "name").FirstOrDefault()).Count(name => name.StartsWith(namePrefix));
+                        sum += (int) index.FindBySubWord(namePrefix).Count();
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
