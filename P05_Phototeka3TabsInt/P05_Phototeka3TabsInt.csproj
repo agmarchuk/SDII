@@ -43,7 +43,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UniversalIndex">
+    <Reference Include="UniversalIndex, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDII\DLLs\UniversalIndex.dll</HintPath>
     </Reference>
   </ItemGroup>

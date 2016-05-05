@@ -15,8 +15,8 @@ namespace P05_Phototeka3TabsInt
         private TableView tab_person, tab_photo_doc, tab_reflection;
         private IndexKeyImmutable<int> ind_arr_person, ind_arr_photo_doc, ind_arr_reflected, ind_arr_in_doc;
         private IndexDynamic<int, IndexKeyImmutable<int>> index_person, index_photo_doc, index_reflected, index_in_doc;
-        private IndexViewImmutable<string> ind_arr_person_name;
-        private IndexDynamic<string, IndexViewImmutable<string>> index_person_name;
+        //private IndexViewImmutable<string> ind_arr_person_name;
+        //private IndexDynamic<string, IndexViewImmutable<string>> index_person_name;
         public Stan3TabsInt(string path)
         {
             PType tp_person = new PTypeRecord(
@@ -93,7 +93,19 @@ namespace P05_Phototeka3TabsInt
                 IndexArray = ind_arr_in_doc,
                 KeyProducer = in_doc_keyproducer
             };
-            //Func<object, string> name_keyproducer = v => 
+            //Func<object, string> name_keyproducer = v => (string)((object[])((object[])v)[1])[1];
+            //ind_arr_person_name = new IndexViewImmutable<string>(path + "personname_ind")
+            //{
+            //    Table = tab_person,
+            //    KeyProducer = name_keyproducer,
+            //    Scale = null
+            //};
+            //index_person_name = new IndexDynamic<string, IndexViewImmutable<string>>(false)
+            //{
+            //     Table = tab_person,
+            //     IndexArray = ind_arr_person_name,
+            //     KeyProducer = name_keyproducer
+            //};
         }
         public void Clear() { tab_person.Clear(); tab_photo_doc.Clear(); tab_reflection.Clear(); }
         public void Build(IEnumerable<XElement> records)

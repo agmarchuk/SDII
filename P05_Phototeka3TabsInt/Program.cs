@@ -66,7 +66,7 @@ namespace P05_Phototeka3TabsInt
                     Console.WriteLine("SelectById ok. Duration={0}", sw.ElapsedMilliseconds); // 46 (1000)
                     res.WriteLine(probe.ToCSV());
                 }
-                else if (probe.sol == "simpleTripleStore_SearchByName")
+                else if (probe.sol == "Stan3TabsInt_SearchByName")
                 {
                     rnd = new Random(777777777);
                     sw.Restart();
@@ -83,7 +83,7 @@ namespace P05_Phototeka3TabsInt
                     Console.WriteLine("SearchByName ok. Duration={0}", sw.ElapsedMilliseconds); // 7
                     res.WriteLine(probe.ToCSV());
                 }
-                else if (probe.sol == "simpleTripleStore_GetRelationByPerson")
+                else if (probe.sol == "Stan3TabsInt_GetRelationByPerson")
                 {
                     rnd = new Random(777777777);
                     sw.Restart();
@@ -91,7 +91,8 @@ namespace P05_Phototeka3TabsInt
                     for (int i = 0; i < probe.nte; i++)
                     {
                         int id = rnd.Next(0, (int)probe.siz - 1);
-                        //sum += simpleTripleStore.GetSubjects("reflected", id.ToString()).Count();
+                        //var qu = tabs.GetReflectionsByReflected(id);
+                        sum += tabs.GetReflectionsByReflected(id).Count();
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
