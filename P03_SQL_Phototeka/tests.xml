@@ -4,7 +4,7 @@
   <ProbeFrame tsk="GetItemById" sol="SQLite_SelectById" nte="1000" />
   <ProbeFrame tsk="SearchByName" sol="SQLite_SearchByName" nte="1000" />
   <ProbeFrame tsk="GePortraitById" sol="SQLite_GetRelationByPerson" nte="1000" />
-  
+
   <ProbeFrame tsk="LoadI" sol="SQLdatabase_load"/>
   <ProbeFrame tsk="GetItemById" sol="SQLdatabase_SelectById" nte="1000" />
   <ProbeFrame tsk="SearchByName" sol="SQLdatabase_SearchByName" nte="1000" />
