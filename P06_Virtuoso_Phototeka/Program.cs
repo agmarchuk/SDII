@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -35,7 +36,6 @@ namespace P06_Virtuoso_Phototeka
                 int npersons = (int)probe.siz;
                 if (probe.sol == "virtuoso7_load")
                 {
-                    // Directory.Delete(path + "../Databases/simple triple store", true);
                     sw.Restart();
                     Reload(engine, npersons);
                     sw.Stop();
@@ -51,9 +51,9 @@ namespace P06_Virtuoso_Phototeka
 
                     for (int i = 0; i < probe.nte; i++)
                     {
-                        int id = rnd.Next(0, (int)probe.siz - 1);
                         string sid = "person"+ rnd.Next(0, (int)probe.siz - 1);
-                        sum +=Convert.ToInt32(engine.Query("sparql select ?o { <" + sid + "> ?p ?o }").First()[0]);
+                        var v = engine.Query("sparql select * { <" + sid + "> ?p ?o }");
+                        sum +=(int) v.First(paramValues => paramValues[0].ToString() == "age")[1];
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
@@ -72,7 +72,7 @@ namespace P06_Virtuoso_Phototeka
                         var intId = rnd.Next(0, (int)probe.siz - 1);
                         string namePrefix = "Pupkin" + intId / 10;
                         sw.Restart();
-                        sum += (int)engine.Query(string.Format("sparql select ?s {{ ?s <name> ?o . Filter(strStarts(str(?o), \"{0}\") }}", namePrefix)).Count();
+                        sum += (int)engine.Query(string.Format("sparql select ?s {{ ?s <name> ?o . Filter(strStarts(str(?o), \"{0}\")) }}", namePrefix)).Count();
                    }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
