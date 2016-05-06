@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<tests siz="400000">
+<tests siz="4000000">
   <ProbeFrame tsk="LoadI" sol="SQLite_load"/>
   <ProbeFrame tsk="GetItemById" sol="SQLite_SelectById" nte="1000" />
   <ProbeFrame tsk="SearchByName" sol="SQLite_SearchByName" nte="1000" />

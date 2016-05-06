@@ -23,8 +23,8 @@ namespace P03_SQL_Phototeka
             Random rnd;
 
             //MySQL db = new MySQL("server=localhost;uid=root;port=3306;password=fetnaggi;");
-            SQLite db = new SQLite("Data Source=" + path + "../databases/test.db3");
-            //SQLdatabase db = new SQLdatabase(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Home\dev2012\SDII\Databases\Test_Phototeka.mdf;Integrated Security=True;Connect Timeout=30");
+            //SQLite db = new SQLite("Data Source=" + path + "../databases/test.db3");
+            SQLdatabase db = new SQLdatabase(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Users\Marchuk\Documents\TestPhototeka.mdf;Integrated Security=True;Connect Timeout=30");
 
             string dbname = db.GetType().Name;
 

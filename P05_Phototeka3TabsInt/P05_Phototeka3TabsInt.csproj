@@ -51,10 +51,6 @@
     <Compile Include="Stan3TabsInt.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Polar\UniversalIndex\UniversalIndex.csproj">
-      <Project>{e4ab7a63-7b55-43e9-b1aa-c8e0f8aa87e3}</Project>
-      <Name>UniversalIndex</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SDII\SDII.csproj">
       <Project>{004f4214-55da-4598-af5b-23f509761815}</Project>
       <Name>SDII</Name>
