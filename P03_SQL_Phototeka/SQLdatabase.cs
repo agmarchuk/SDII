@@ -4,28 +4,27 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SQLite;
 using System.Xml.Linq;
 
 namespace P03_SQL_Phototeka
 {
-    public class SQLite : ISimpleAccess
+    class SQLdatabase : ISimpleAccess
     {
         private DbConnection connection = null;
-        public SQLite(string connectionstring)
+        public SQLdatabase(string connectionstring)
         {
-            DbProviderFactory fact = new System.Data.SQLite.SQLiteFactory(); //DbProviderFactories.GetFactory("System.Data.SQLite");
-            this.connection = fact.CreateConnection();
-            this.connection.ConnectionString = connectionstring;
+            string dataprovider = "System.Data.SqlClient";
+            DbProviderFactory factory = DbProviderFactories.GetFactory(dataprovider);
+            connection = factory.CreateConnection();
+            connection.ConnectionString = connectionstring;
         }
-        public void PrepareToLoad()
+        public void PrepareToLoad() 
         {
             connection.Open();
             DbCommand comm = connection.CreateCommand();
             comm.CommandText = "DROP TABLE person; DROP TABLE photo_doc; DROP TABLE reflection;";
             string message = null;
-            try { comm.ExecuteNonQuery(); }
-            catch (Exception ex) { message = ex.Message; }
+            try { comm.ExecuteNonQuery(); } catch (Exception ex) { message = ex.Message; }
             comm.CommandText =
 @"CREATE TABLE person (id INT NOT NULL, name NVARCHAR(400), age INT, PRIMARY KEY(id));
 CREATE TABLE photo_doc (id INT NOT NULL, name NVARCHAR(400), PRIMARY KEY(id));
@@ -63,19 +62,17 @@ CREATE INDEX reflection_indoc ON reflection(in_doc);";
             int i = 1;
             foreach (XElement element in element_flow)
             {
-                if (i % 10000 == 0) Console.Write("{0} ", i / 1000);
+                if (i % 1000 == 0) Console.Write("{0} ", i / 1000); 
                 i++;
                 string table = element.Name.LocalName;
                 string aaa = null;
                 if (table == "person")
                     aaa = "(" + element.Attribute("id").Value + ", " +
-                        //"N'" + element.Element("name").Value.Replace('\'', '"') + "', " +
-                        "'" + element.Element("name").Value.Replace('\'', '"') + "', " +
+                        "N'" + element.Element("name").Value.Replace('\'', '"') + "', " +
                         "" + element.Element("age").Value + ");";
                 else if (table == "photo_doc")
                     aaa = "(" + element.Attribute("id").Value + ", " +
-                        //"N'" + element.Element("name").Value.Replace('\'', '"') + "'" +
-                        "'" + element.Element("name").Value.Replace('\'', '"') + "'" +
+                        "N'" + element.Element("name").Value.Replace('\'', '"') + "'" +
                         ")";
                 else if (table == "reflection")
                     aaa = "(" + element.Attribute("id").Value + ", " +
@@ -94,7 +91,7 @@ CREATE INDEX reflection_indoc ON reflection(in_doc);";
             connection.Open();
             var comm = connection.CreateCommand();
             comm.CommandTimeout = 1000;
-            comm.CommandText = "SELECT COUNT(*) FROM " + table + ";";
+            comm.CommandText = "SELECT COUNT(*) FROM " + table +";";
             var obj = comm.ExecuteScalar();
             //Console.WriteLine("Count()={0}", obj);
             connection.Close();
@@ -120,14 +117,11 @@ CREATE INDEX reflection_indoc ON reflection(in_doc);";
         {
             connection.Open();
             var comm = connection.CreateCommand();
-            //comm.CommandText = "SELECT * FROM " + table + " WHERE name LIKE N'" + searchstring + "%'";
             comm.CommandText = "SELECT * FROM " + table + " WHERE name LIKE '" + searchstring + "%'";
-            int sum = 0;
             var reader = comm.ExecuteReader();
             object[] row = new object[reader.FieldCount];
             while (reader.Read())
             {
-                sum++;
                 var qu = reader.GetValues(row);
                 yield return row.Select(v => v).ToArray();
             }

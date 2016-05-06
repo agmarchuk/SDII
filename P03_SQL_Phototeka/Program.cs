@@ -24,13 +24,15 @@ namespace P03_SQL_Phototeka
 
             //MySQL db = new MySQL("server=localhost;uid=root;port=3306;password=fetnaggi;");
             SQLite db = new SQLite("Data Source=" + path + "../databases/test.db3");
-            //SQLdatabase db = new SQLdatabase(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\home\dev\AdapterRDB\bin\Debug\test.mdf;Integrated Security=True;Connect Timeout=30");
+            //SQLdatabase db = new SQLdatabase(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Home\dev2012\SDII\Databases\Test_Phototeka.mdf;Integrated Security=True;Connect Timeout=30");
+
+            string dbname = db.GetType().Name;
 
             foreach (XElement xprobe in xcnf.Elements())
             {
                 ProbeFrame probe = new ProbeFrame(xprobe.AncestorsAndSelf().Attributes());
                 int npersons = (int)probe.siz;
-                if (probe.sol == "sqlite_load")
+                if (probe.sol == dbname + "_load")
                 {
                     db.PrepareToLoad();
                     sw.Restart();
@@ -48,7 +50,7 @@ namespace P03_SQL_Phototeka
                     Console.WriteLine("Load ok."); // 10000: 14.9 сек.
                     res.WriteLine(probe.ToCSV());
                 }
-                else if (probe.sol == "sqlite_SelectById")
+                else if (probe.sol == dbname + "_SelectById")
                 {
                     rnd = new Random(777777777);
                     sw.Restart();
@@ -56,7 +58,7 @@ namespace P03_SQL_Phototeka
                     for (int i = 0; i < probe.nte; i++)
                     {
                         int id = rnd.Next(0, (int)probe.siz - 1);
-                        sum += (int)(db.SelectById(id, "person")[2]);
+                        sum += (int)(db.GetById(id, "person")[2]);
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
@@ -64,7 +66,7 @@ namespace P03_SQL_Phototeka
                     Console.WriteLine("SelectById ok. Duration={0}", sw.ElapsedMilliseconds); // 7
                     res.WriteLine(probe.ToCSV());
                 }
-                else if (probe.sol == "sqlite_SearchByName")
+                else if (probe.sol == dbname + "_SearchByName")
                 {
                     rnd = new Random(777777777);
                     sw.Restart();
@@ -72,7 +74,7 @@ namespace P03_SQL_Phototeka
                     for (int i = 0; i < probe.nte; i++)
                     {
                         int id = rnd.Next(0, (int)probe.siz - 1);
-                        sum += (int)(db.SearchByName("Pupkin" + id/10, "person"));
+                        sum += db.SearchByName("Pupkin" + id/10, "person").Count();
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
@@ -80,7 +82,7 @@ namespace P03_SQL_Phototeka
                     Console.WriteLine("SearchByName ok. Duration={0}", sw.ElapsedMilliseconds); // 7
                     res.WriteLine(probe.ToCSV());
                 }
-                else if (probe.sol == "sqlite_GetRelationByPerson")
+                else if (probe.sol == dbname + "_GetRelationByPerson")
                 {
                     rnd = new Random(777777777);
                     sw.Restart();
@@ -88,7 +90,7 @@ namespace P03_SQL_Phototeka
                     for (int i = 0; i < probe.nte; i++)
                     {
                         int id = rnd.Next(0, (int)probe.siz - 1);
-                        sum += (int)(db.GetRelationByPerson(id));
+                        sum += db.GetPhotosOfPersonUsingRelation(id).Count();
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;

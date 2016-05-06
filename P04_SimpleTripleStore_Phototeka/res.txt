@@ -10,3 +10,7 @@ LoadI,simpleTripleStore_load,,myWork16G64W,40000,0,-1,19342,-1,-1,-1,-1,0,2016-0
 GetItemById,simpleTripleStore_SelectById,,myWork16G64W,40000,1000,-1,-1,-1,61,-1,-1,59074,2016-05-05T21:22:55,""
 SearchByName,simpleTripleStore_SearchByName,,myWork16G64W,40000,100,-1,-1,-1,27,-1,-1,463448,2016-05-05T21:22:55,""
 GePortraitById,simpleTripleStore_GetRelationByPerson,,myWork16G64W,40000,1000,-1,-1,-1,65,-1,-1,6098,2016-05-05T21:22:56,""
+LoadI,simpleTripleStore_load,,myWork16G64W,40000,0,-1,19010,-1,-1,-1,-1,0,2016-05-06T06:12:14,""
+GetItemById,simpleTripleStore_SelectById,,myWork16G64W,40000,1000,-1,-1,-1,60,-1,-1,59074,2016-05-06T06:12:33,""
+SearchByName,simpleTripleStore_SearchByName,,myWork16G64W,40000,100,-1,-1,-1,25,-1,-1,463448,2016-05-06T06:12:33,""
+GePortraitById,simpleTripleStore_GetRelationByPerson,,myWork16G64W,40000,1000,-1,-1,-1,63,-1,-1,6098,2016-05-06T06:12:34,""

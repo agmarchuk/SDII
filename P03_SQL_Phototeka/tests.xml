@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<tests siz="40000">
-  <!--
-  -->
-  <ProbeFrame tsk="LoadI" sol="sqlite_load"/>
-  <ProbeFrame tsk="GetItemById" sol="sqlite_SelectById" nte="1000" />
-  <ProbeFrame tsk="SearchByName" sol="sqlite_SearchByName" nte="100" />
-  <ProbeFrame tsk="GePortraitById" sol="sqlite_GetRelationByPerson" nte="1000" />
+<tests siz="400000">
+  <ProbeFrame tsk="LoadI" sol="SQLite_load"/>
+  <ProbeFrame tsk="GetItemById" sol="SQLite_SelectById" nte="1000" />
+  <ProbeFrame tsk="SearchByName" sol="SQLite_SearchByName" nte="1000" />
+  <ProbeFrame tsk="GePortraitById" sol="SQLite_GetRelationByPerson" nte="1000" />
+  
+  <ProbeFrame tsk="LoadI" sol="SQLdatabase_load"/>
+  <ProbeFrame tsk="GetItemById" sol="SQLdatabase_SelectById" nte="1000" />
+  <ProbeFrame tsk="SearchByName" sol="SQLdatabase_SearchByName" nte="1000" />
+  <ProbeFrame tsk="GePortraitById" sol="SQLdatabase_GetRelationByPerson" nte="1000" />
 </tests> 
