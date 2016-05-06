@@ -75,7 +75,7 @@ namespace P04_SimpleTripleStore_Phototeka
                     {
                         int id = rnd.Next(0, (int) probe.siz - 1);
                         string namePrefix = "Pupkin" + id/10;
-                        sum += (int) index.FindBySubWord(namePrefix).Count();
+                        sum += (int) index.FindBySubWord(namePrefix).Select(sid=>simpleTripleStore.GetObject(sid, "name").First()).Where(name=>name.StartsWith(namePrefix)).Count();
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
@@ -90,8 +90,12 @@ namespace P04_SimpleTripleStore_Phototeka
                     long sum = 0;
                     for (int i = 0; i < probe.nte; i++)
                     {
-                        int id = rnd.Next(0, (int) probe.siz - 1);
-                        sum += simpleTripleStore.GetSubjects("reflected", id.ToString()).Count();
+                        int persId = rnd.Next(0, (int) probe.siz - 1);
+                        sum += simpleTripleStore.GetSubjects("reflected", persId.ToString())
+                            .Select(refid=>simpleTripleStore.GetObject(refid, "in_doc").First())
+                            .Select(int.Parse)
+                            .Select(photoId=>simpleTripleStore.GetDirects(photoId))
+                            .Count();
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
