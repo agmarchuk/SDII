@@ -218,3 +218,4 @@ pip-log.txt
 /Databases/*.bin
 /Databases/*.db3
 /Databases/*
+/packages
