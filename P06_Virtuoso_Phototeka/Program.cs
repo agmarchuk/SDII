@@ -47,19 +47,13 @@ namespace P06_Virtuoso_Phototeka
                 {
                     rnd = new Random(777777777);
                     long sum = 0;
-                    foreach (var objectse in engine.Query("sparql select * { <" + 0 + "> ?p ?o }"))
-                    {
-                        foreach (var o in objectse)
-                        {
-                            Console.WriteLine(o);
-                        }
-                    }
                     sw.Restart();
 
                     for (int i = 0; i < probe.nte; i++)
                     {
                         int id = rnd.Next(0, (int)probe.siz - 1);
-                        sum +=Convert.ToInt32(engine.Query("sparql select * { <" + id + "> ?p ?o }").First()[0]);
+                        string sid = "person"+ rnd.Next(0, (int)probe.siz - 1);
+                        sum +=Convert.ToInt32(engine.Query("sparql select ?o { <" + sid + "> ?p ?o }").First()[0]);
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
@@ -75,11 +69,11 @@ namespace P06_Virtuoso_Phototeka
                     long sum = 0;
                     for (int i = 0; i < probe.nte; i++)
                     {
-                        int id = rnd.Next(0, (int)probe.siz - 1);
-                        string namePrefix = "Pupkin" + id / 10;
-                    sw.Restart();
-                        sum += (int)engine.Query(string.Format("sparql select ?s {{ ?s <name> ?o . Filter(strStarts(?o, \"{0}\") }}", namePrefix)).Count();
-                    }
+                        var intId = rnd.Next(0, (int)probe.siz - 1);
+                        string namePrefix = "Pupkin" + intId / 10;
+                        sw.Restart();
+                        sum += (int)engine.Query(string.Format("sparql select ?s {{ ?s <name> ?o . Filter(strStarts(str(?o), \"{0}\") }}", namePrefix)).Count();
+                   }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
                     probe.sum = sum;
@@ -93,7 +87,7 @@ namespace P06_Virtuoso_Phototeka
                     long sum = 0;
                     for (int i = 0; i < probe.nte; i++)
                     {
-                        int persId = rnd.Next(0, (int)probe.siz - 1);
+                        string persId = "person"+ rnd.Next(0, (int)probe.siz - 1);
                         sum += engine.Query(string.Format("sparql select ?phname {{?refl <reflected> <{0}> . ?refl <in_doc> ?ph . ?ph <name> ?phname}}", persId))
                             .Count();
                     }
