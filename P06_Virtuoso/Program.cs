@@ -19,10 +19,16 @@ namespace P06_Virtuoso
             XElement xcnf = XElement.Load(path + "tests.xml");
             XElement xcommon = XElement.Load(path + "../common.xml");
             xcommon.Add(xcnf);
+
             Random rnd;
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
             AdapterVirtuosoSimple engine = new AdapterVirtuosoSimple("HOST=localhost:1550;UID=dba;PWD=dba;Charset=UTF-8;Connection Timeout=500", "g");
+
+            //Console.WriteLine((string)engine.Query("sparql select Count(?p) { ?p a <person>}").First()[0].ToString());
+            //Console.WriteLine((string)engine.Query("sparql select Count(?p) { ?p a <photo_doc>}").First()[0].ToString());
+            //Console.WriteLine((string)engine.Query("sparql select Count(?p) { ?p <reflected> ?o}").First()[0].ToString());
+
 
             foreach (XElement xprobe in xcnf.Elements())
             {
@@ -101,7 +107,7 @@ namespace P06_Virtuoso
                         string persId = "person" + rnd.Next(0, (int)probe.siz - 1);
                         sum += engine.Query(
                             //"sparql select ?phname {?refl <reflected> <"+persId+"> . ?refl <in_doc> ?ph . ?ph <name> ?phname}")
-                            "sparql select ?refl {?refl <reflected> <"+persId+"> . }")
+                            "sparql select ?refl { ?refl <reflected> <"+persId+"> . }")
                             .Count();
                     }
                     sw.Stop();
