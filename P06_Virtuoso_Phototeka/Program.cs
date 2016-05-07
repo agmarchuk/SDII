@@ -70,7 +70,17 @@ namespace P06_Virtuoso_Phototeka
                     {
                         var intId = rnd.Next(0, (int)probe.siz - 1);
                         string namePrefix = "Pupkin" + intId / 10;
-                        sum += (int)engine.Query(string.Format("sparql select ?s {{ ?s <name> ?o . Filter(strStarts(str(?o), \"{0}\")) }}", namePrefix)).Count();
+                        //sum += (int)engine.Query(string.Format("sparql select ?s {{ ?s <name> ?o . Filter(strStarts(str(?o), \"{0}\")) }}", namePrefix)).Count();
+                        var enumerable = engine.Query(string.Format("sparql select ?s {{ ?s <name> ?o . Filter(strStarts(str(?o), \"{0}\")) }}", namePrefix));
+                        foreach (var objectse in enumerable)
+                        {
+                            foreach (var o in objectse)
+                            {
+                                Console.WriteLine(o);
+                            }
+                            Console.WriteLine();
+                        }
+                        sum += (int)enumerable.Count();
                    }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
