@@ -68,13 +68,12 @@ namespace P06_Virtuoso_Phototeka
                     Console.WriteLine((string)engine.Query("sparql select Count(?p) { ?p a <reflection>}").First()[0].ToString());
                     rnd = new Random(777777777);
                     sw.Restart();
-                    
                     long sum = 0;
                     for (int i = 0; i < probe.nte; i++)
                     {
                         var intId = rnd.Next(0, (int)probe.siz - 1);
                         string namePrefix = "Pupkin" + intId / 10;
-                        
+                        //sum += (int)engine.Query(string.Format("sparql select ?s {{ ?s <name> ?o . Filter(strStarts(str(?o), \"{0}\")) }}", namePrefix)).Count();
                         var enumerable = engine.Query(string.Format("sparql select ?s {{ ?s <name> ?o . Filter(strStarts(str(?o), \"{0}\")) }}", namePrefix));
                         //foreach (var objectse in enumerable)
                         //{

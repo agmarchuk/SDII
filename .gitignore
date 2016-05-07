@@ -219,3 +219,7 @@ pip-log.txt
 /Databases/*.db3
 /Databases/*
 /packages
+/P03_SQL_Phototeka/TestPhototekaDataSet.xsc
+/P03_SQL_Phototeka/TestPhototekaDataSet.xsd
+/P03_SQL_Phototeka/TestPhototekaDataSet.xss
+/P03_SQL_Phototeka/TestPhototekaDataSet.Designer.cs

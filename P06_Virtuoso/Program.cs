@@ -7,74 +7,83 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using SDII;
 
-namespace P03_SQL_Phototeka
+namespace P06_Virtuoso
 {
     public class Program
     {
         public static void Main()
         {
-            Console.WriteLine("Start TestGenerator");
+            Console.WriteLine("Start P06_Virtuoso");
             string path = "../../";
-            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             TextWriter res = new StreamWriter(new FileStream(path + "res.txt", FileMode.Append, FileAccess.Write));
             XElement xcnf = XElement.Load(path + "tests.xml");
             XElement xcommon = XElement.Load(path + "../common.xml");
             xcommon.Add(xcnf);
             Random rnd;
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
-            //MySQL db = new MySQL("server=localhost;uid=root;port=3306;password=fetnaggi;");
-            //SQLite db = new SQLite("Data Source=" + path + "../databases/test.db3");
-            SQLdatabase db = new SQLdatabase(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\Users\Marchuk\Documents\TestPhototeka.mdf;Integrated Security=True;Connect Timeout=30");
-
-            string dbname = db.GetType().Name;
+            AdapterVirtuosoSimple engine = new AdapterVirtuosoSimple("HOST=localhost:1550;UID=dba;PWD=dba;Charset=UTF-8;Connection Timeout=500", "g");
 
             foreach (XElement xprobe in xcnf.Elements())
             {
                 ProbeFrame probe = new ProbeFrame(xprobe.AncestorsAndSelf().Attributes());
                 int npersons = (int)probe.siz;
-                if (probe.sol == dbname + "_load")
+                if (probe.sol == "virtuoso_load")
                 {
-                    db.PrepareToLoad();
-                    sw.Restart();
+                    engine.PrepareToLoad();
                     Polar.Data.Phototeka generator = new Polar.Data.Phototeka(npersons, 777777);
-                    db.LoadElementFlow(generator.Generate1of3());
-                    db.LoadElementFlow(generator.Generate2of3());
-                    db.LoadElementFlow(generator.Generate3of3());
-                    sw.Stop();
-                    probe.lod = sw.ElapsedMilliseconds;
-
                     sw.Restart();
-                    db.MakeIndexes();
+                    engine.Load(generator.Generate1of3());
+                    engine.Load(generator.Generate2of3());
+                    engine.Load(generator.Generate3of3());
                     sw.Stop();
+                    Console.WriteLine("Load ok. Duration={0}", sw.ElapsedMilliseconds); // 10000: 14.9 сек.
                     probe.ndx = sw.ElapsedMilliseconds;
-                    Console.WriteLine("Load ok."); // 10000: 14.9 сек.
                     res.WriteLine(probe.ToCSV());
                 }
-                else if (probe.sol == dbname + "_SelectById")
+                else if (probe.sol == "virtuoso_SelectById")
                 {
                     rnd = new Random(777777777);
-                    sw.Restart();
                     long sum = 0;
+                    sw.Restart();
+                    //var rcommand = engine.RunStart();
                     for (int i = 0; i < probe.nte; i++)
                     {
-                        int id = rnd.Next(0, (int)probe.siz - 1);
-                        sum += (int)(db.GetById(id, "person")[2]);
+                        string sid = "person" + rnd.Next(0, (int)probe.siz - 1);
+                        var v = engine.Query("sparql select * { <" + sid + "> ?p ?o }")
+                            .First(po => po[0].ToString() == "age")
+                            .ToArray();
+                        //    .First(po => (string)po[0] == "age");
+                        string s = v[1].ToString();
+                        sum += Int32.Parse(s);
                     }
+                    //engine.RunStop(rcommand);
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
                     probe.sum = sum;
                     Console.WriteLine("SelectById ok. Duration={0}", sw.ElapsedMilliseconds); // 7
                     res.WriteLine(probe.ToCSV());
                 }
-                else if (probe.sol == dbname + "_SearchByName")
+                else if (probe.sol == "virtuoso_SearchByName")
                 {
                     rnd = new Random(777777777);
                     sw.Restart();
                     long sum = 0;
                     for (int i = 0; i < probe.nte; i++)
                     {
-                        int id = rnd.Next(0, (int)probe.siz - 1);
-                        sum += db.SearchByName("Pupkin" + id/10, "person").Count();
+                        var intId = rnd.Next(0, (int)probe.siz - 1);
+                        string namePrefix = "Pupkin" + intId / 10;
+                        //sum += (int)engine.Query(string.Format("sparql select ?s {{ ?s <name> ?o . Filter(strStarts(str(?o), \"{0}\")) }}", namePrefix)).Count();
+                        var enumerable = engine.Query(string.Format("sparql select ?s {{ ?s <name> ?o . Filter(strStarts(str(?o), \"{0}\")) }}", namePrefix));
+                        //foreach (var objectse in enumerable)
+                        //{
+                        //    foreach (var o in objectse)
+                        //    {
+                        //        Console.WriteLine(o);
+                        //    }
+                        //    Console.WriteLine();
+                        //}
+                        sum += (int)enumerable.Count();
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
@@ -82,15 +91,18 @@ namespace P03_SQL_Phototeka
                     Console.WriteLine("SearchByName ok. Duration={0}", sw.ElapsedMilliseconds); // 7
                     res.WriteLine(probe.ToCSV());
                 }
-                else if (probe.sol == dbname + "_GetRelationByPerson")
+                else if (probe.sol == "virtuoso_GetRelationByPerson")
                 {
                     rnd = new Random(777777777);
                     sw.Restart();
                     long sum = 0;
                     for (int i = 0; i < probe.nte; i++)
                     {
-                        int id = rnd.Next(0, (int)probe.siz - 1);
-                        sum += db.GetPhotosOfPersonUsingRelation(id).Count();
+                        string persId = "person" + rnd.Next(0, (int)probe.siz - 1);
+                        sum += engine.Query(
+                            //"sparql select ?phname {?refl <reflected> <"+persId+"> . ?refl <in_doc> ?ph . ?ph <name> ?phname}")
+                            "sparql select ?refl {?refl <reflected> <"+persId+"> . }")
+                            .Count();
                     }
                     sw.Stop();
                     probe.tim = sw.ElapsedMilliseconds;
@@ -103,6 +115,7 @@ namespace P03_SQL_Phototeka
                 }
             }
             res.Close();
+
         }
     }
 }

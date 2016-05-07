@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>P06_Virtuoso_Phototeka</RootNamespace>
     <AssemblyName>P06_Virtuoso_Phototeka</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,7 +40,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Data.Framework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="RDFCommon">
-      <HintPath>..\..\RDF-Store\RDFCommon\bin\Debug\RDFCommon.dll</HintPath>
+      <HintPath>..\SDII\DLLs\RDFCommon.dll</HintPath>
     </Reference>
     <Reference Include="sema2012m">
       <HintPath>..\SDII\DLLs\sema2012m.dll</HintPath>
