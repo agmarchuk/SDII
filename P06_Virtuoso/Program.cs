@@ -100,8 +100,8 @@ namespace P06_Virtuoso
                     {
                         string persId = "person" + rnd.Next(0, (int)probe.siz - 1);
                         sum += engine.Query(
-                            //"sparql select ?phname {?refl <reflected> <"+persId+"> . ?refl <in_doc> ?ph . ?ph <name> ?phname}")
-                            "sparql select ?refl {?refl <reflected> <"+persId+"> . }")
+                            "sparql select ?phname {?refl <reflected> <"+persId+"> . ?refl <in_doc> ?ph . ?ph <name> ?phname}")
+                            //"sparql select ?refl {?refl <reflected> <"+persId+"> . }")
                             .Count();
                     }
                     sw.Stop();
