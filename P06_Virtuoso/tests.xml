@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <tests siz="40000">
-  <ProbeFrame tsk="LoadI" sol="virtuoso_load"/>
+  <!--<ProbeFrame tsk="LoadI" sol="virtuoso_load"/>-->
   <ProbeFrame tsk="GetItemById" sol="virtuoso_SelectById" nte="1000" />
   <ProbeFrame tsk="GePortraitById" sol="virtuoso_GetRelationByPerson" nte="1000" />
   
