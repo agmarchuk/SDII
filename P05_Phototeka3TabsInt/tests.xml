@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<tests siz="400000">
+<tests siz="40000000">
   <!--
   -->
   <ProbeFrame tsk="LoadI" sol="Stan3TabsInt_load"/>

@@ -112,7 +112,7 @@ namespace P06_Virtuoso
                     XAttribute oobj = xprop.Attribute("ref");
                     if (oobj != null) // Object Property
                     {
-                        string nid = oobj.Name.LocalName;
+                        string nid = oobj.Value;
                         string obj_id = prop == "reflected" ? "person" + nid : "photo_doc" + nid; 
                         buffer.AddCommandToBuffer("<" + id + "> <" + prop + "> <" + obj_id + ">");
                     }
@@ -121,6 +121,7 @@ namespace P06_Virtuoso
                         buffer.AddCommandToBuffer("<" + id + "> <" + prop + "> \"" + xprop.Value + "\"");
                     }
                 }
+
             }
             buffer.FlushBuffer();
         }
@@ -148,7 +149,7 @@ namespace P06_Virtuoso
             // размер буфера
             int bufferportion = 1000;
             // размер порции для внедрения данных
-            int portion = 20;
+            int portion = 40;
 
             b_entities = new BufferredProcessing<string>(bufferportion, flow =>
             {

@@ -19,6 +19,7 @@ namespace P06_Virtuoso
             XElement xcnf = XElement.Load(path + "tests.xml");
             XElement xcommon = XElement.Load(path + "../common.xml");
             xcommon.Add(xcnf);
+
             Random rnd;
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
