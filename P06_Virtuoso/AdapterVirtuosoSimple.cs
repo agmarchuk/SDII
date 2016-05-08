@@ -149,7 +149,7 @@ namespace P06_Virtuoso
             // размер буфера
             int bufferportion = 1000;
             // размер порции для внедрения данных
-            int portion = 20;
+            int portion = 40;
 
             b_entities = new BufferredProcessing<string>(bufferportion, flow =>
             {
