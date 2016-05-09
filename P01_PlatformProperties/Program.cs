@@ -14,6 +14,7 @@ namespace P01_PlatformProperties
     {
         public static void Main()
         {
+            Console.WriteLine("Start P01_PlatformPreperties");
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             string path = @"../../";
             TextWriter res = new StreamWriter(new FileStream(path + "res.txt", FileMode.Append, FileAccess.Write));
@@ -139,7 +140,9 @@ namespace P01_PlatformProperties
                     for (int i = 0; i < siz; i++)
                     {
                         bw.Write((long)i);
+                        if ((i + 1) % 1000000 == 0) Console.Write("" + (i + 1) / 1000000 + "m ");
                     }
+                    Console.WriteLine();
                     stream.Flush();
                     sw.Stop();
                     probe.lod = sw.ElapsedMilliseconds;

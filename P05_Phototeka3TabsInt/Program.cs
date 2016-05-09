@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Polar.Data;
 using SDII;
+using PolarDB;
 
 namespace P05_Phototeka3TabsInt
 {
@@ -35,10 +36,18 @@ namespace P05_Phototeka3TabsInt
                 {
                     sw.Restart();
                     Polar.Data.Phototeka generator = new Polar.Data.Phototeka(npersons, 777777);
-                    tabs.Build(
-                        generator.Generate1of3()
-                        .Concat(generator.Generate2of3()
-                        .Concat(generator.Generate3of3())));
+
+
+                    //var n = generator.Generate1of3().Count();
+                    //tabs.Build(
+                    //    generator.Generate1of3());
+                    tabs.Clear();
+                    var query_p = generator.Generate1of3();
+                    tabs.BuildPersons(query_p);
+                    var query_ph = generator.Generate2of3();
+                    tabs.BuildPhoto_docs(query_ph);
+                    var query_r = generator.Generate3of3();
+                    tabs.BuildReflections(query_r);
                     sw.Stop();
                     probe.lod = sw.ElapsedMilliseconds;
                     Console.WriteLine("Load ok. Duration={0}", sw.ElapsedMilliseconds); // 10000: 14.9 сек.

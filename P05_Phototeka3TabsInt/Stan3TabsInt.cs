@@ -108,6 +108,41 @@ namespace P05_Phototeka3TabsInt
             };
         }
         public void Clear() { tab_person.Clear(); tab_photo_doc.Clear(); tab_reflection.Clear(); }
+        public void BuildPersons(IEnumerable<XElement> records)
+        {
+            IEnumerable<object> flow = records
+                .Select(rec =>
+                {
+                    int code = Int32.Parse(rec.Attribute("id").Value);
+                    string name = rec.Element("name").Value;
+                    int age = Int32.Parse(rec.Element("age").Value);
+                    return new object[] { code, name, age };
+                });
+            tab_person.Fill(flow);
+        }
+        public void BuildPhoto_docs(IEnumerable<XElement> records)
+        {
+            IEnumerable<object> flow = records
+                .Select(rec =>
+                {
+                    int code = Int32.Parse(rec.Attribute("id").Value);
+                    string name = rec.Element("name").Value;
+                    return new object[] { code, name };
+                });
+            tab_photo_doc.Fill(flow);
+        }
+        public void BuildReflections(IEnumerable<XElement> records)
+        {
+            IEnumerable<object> flow = records
+                .Select(rec =>
+                {
+                    int code = Int32.Parse(rec.Attribute("id").Value);
+                    int reflected = Int32.Parse(rec.Element("reflected").Attribute("ref").Value);
+                    int in_doc = Int32.Parse(rec.Element("in_doc").Attribute("ref").Value);
+                    return new object[] { code, reflected, in_doc };
+                });
+            tab_reflection.Fill(flow);
+        }
         public void Build(IEnumerable<XElement> records)
         {
             this.Clear();
