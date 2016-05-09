@@ -34,10 +34,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PolarDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDII\DLLs64\PolarDB.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +51,10 @@
     <Compile Include="Stan3TabsInt.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Polar\PolarDB\PolarDB.csproj">
+      <Project>{e418d12c-9027-4292-aab4-d8130c6e3829}</Project>
+      <Name>PolarDB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SDII\SDII.csproj">
       <Project>{004f4214-55da-4598-af5b-23f509761815}</Project>
       <Name>SDII</Name>
@@ -64,6 +64,9 @@
     <Content Include="tests.xml">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
