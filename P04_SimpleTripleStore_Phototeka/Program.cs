@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using SDII;
 using SimpleTripleStore;
+using UniversalIndex.Text_index;
 
 namespace P04_SimpleTripleStore_Phototeka
 {
@@ -61,27 +63,33 @@ namespace P04_SimpleTripleStore_Phototeka
                 else if (probe.sol == "simpleTripleStore_SearchByName")
                 {
 
-                    //rnd = new Random(777777777);
-                    //sw.Restart();
+                    rnd = new Random(777777777);
+                    sw.Restart();
 
-                    //WordIndex index =new WordIndex();
-                    //for (int i = 0; i < probe.siz; i++)
-                    //    index.Insert(simpleTripleStore.GetObject(i, "name").First(), i);
-                    //Console.WriteLine("build words trigrams index "+sw.ElapsedMilliseconds  );
-                    //Console.WriteLine("RAM used {0} mb.", GC.GetTotalMemory(false)/1024/1024);
-                    //sw.Restart();
-                    //long sum = 0;
-                    //for (int i = 0; i < probe.nte; i++)
-                    //{
-                    //    int id = rnd.Next(0, (int) probe.siz - 1);
-                    //    string namePrefix = "Pupkin" + id/10;
-                    //    sum += (int) index.FindBySubWord(namePrefix).Select(sid=>simpleTripleStore.GetObject(sid, "name").First()).Where(name=>name.StartsWith(namePrefix)).Count();
-                    //}
-                    //sw.Stop();
-                    //probe.tim = sw.ElapsedMilliseconds;
-                    //probe.sum = sum;
-                    //Console.WriteLine("SearchByName ok. Duration={0}", sw.ElapsedMilliseconds); // 7
-                    //res.WriteLine(probe.ToCSV());
+                    WordIndex index = new WordIndex();
+                    
+                    for (int i = 0; i < probe.siz; i++)
+                    {
+                        var w = simpleTripleStore.GetObject(i, "name").First();
+                        index.Insert(w, i);
+                    }
+                    Console.WriteLine("build words trigrams index " + sw.ElapsedMilliseconds);
+                    Console.WriteLine("RAM used {0} mb.", GC.GetTotalMemory(false) / 1024 / 1024);
+                    sw.Restart();
+                    long sum = 0, sum2=0;
+                    for (int i = 0; i < probe.nte; i++)
+                    {
+                        int id = rnd.Next(0, (int)probe.siz - 1);
+                        string namePrefix = "Pupkin" + id / 10;
+                        sum += (int)index.FindBySubWord(namePrefix).Count();
+                    }
+                    Console.WriteLine(sum);
+                    Console.WriteLine(sum2);
+                    sw.Stop();
+                    probe.tim = sw.ElapsedMilliseconds;
+                    probe.sum = sum;
+                    Console.WriteLine("SearchByName ok. Duration={0}", sw.ElapsedMilliseconds); // 7
+                    res.WriteLine(probe.ToCSV());
                 }
                 else if (probe.sol == "simpleTripleStore_GetRelationByPerson")
                 {
