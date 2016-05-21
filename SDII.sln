@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolarDB", "..\Polar\PolarDB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P11_PlatformProperties2", "P11_PlatformProperties2\P11_PlatformProperties2.csproj", "{400DA7E8-A1CA-4B9B-9AF5-7764ABDEDAEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P14_Universal_NameTable", "P14_Universal_NameTable\P14_Universal_NameTable.csproj", "{D93027C5-7823-4AF1-9117-51828032251B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{400DA7E8-A1CA-4B9B-9AF5-7764ABDEDAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{400DA7E8-A1CA-4B9B-9AF5-7764ABDEDAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{400DA7E8-A1CA-4B9B-9AF5-7764ABDEDAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D93027C5-7823-4AF1-9117-51828032251B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D93027C5-7823-4AF1-9117-51828032251B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D93027C5-7823-4AF1-9117-51828032251B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D93027C5-7823-4AF1-9117-51828032251B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
