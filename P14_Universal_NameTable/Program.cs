@@ -71,7 +71,11 @@ namespace P14_Universal_NameTable
                             //.Select(i => nameTable.Codes.ElementAt(i))
                             .ToArray();
                     sw.Restart();
-                    codes.Select(code => nameTable.GetString(code)).ToList();
+                    long sum = 0L;
+
+                    foreach (var code in codes)
+                        sum += nameTable.GetString(code).Length;
+
                     sw.Stop();
                     probe.lod = sw.ElapsedMilliseconds;
                     res.WriteLine(probe.ToCSV());
@@ -87,8 +91,12 @@ namespace P14_Universal_NameTable
                             .Select(i => rnd.Next((int)nameTable.Count))
                             .Select(i => nameTable.Keys.ElementAt(i))
                             .ToArray();
+                    long sum = 0L;
                     sw.Restart();
-                    keys.Select(key => nameTable.GetCode(key)).ToList();
+                    foreach (var key in keys)
+                    {
+                        sum += nameTable.GetCode(key);
+                    }
                     sw.Stop();
                     probe.lod = sw.ElapsedMilliseconds;
                     res.WriteLine(probe.ToCSV());
