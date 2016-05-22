@@ -23,6 +23,7 @@ namespace P11_PlatformProperties2
             Random rnd;
             Dictionary<string, int> str2Int = new Dictionary<string, int>();
             List<string> int2Str = new List<string>();
+            int[] testingcodes = null;
             foreach (XElement xprobe in xcnf.Elements())
             {
                 ProbeFrame probe = new ProbeFrame(xprobe.AncestorsAndSelf().Attributes());
@@ -34,8 +35,9 @@ namespace P11_PlatformProperties2
                     int siz = (int)probe.siz;
                     for (int i = 0; i < siz; i++)
                     {
-                        str2Int.Add(i.ToString(), i);
-                        int2Str.Add(i.ToString());
+                        string s = i.ToString();
+                        str2Int.Add(s, i);
+                        int2Str.Add(s.ToString());
                     }
                     sw.Stop();
                     probe.lod = sw.ElapsedMilliseconds;
@@ -44,13 +46,13 @@ namespace P11_PlatformProperties2
                 }
                 else if (probe.sol == "TestCompositions")
                 {
-                    int siz = (int)probe.siz;
-                    foreach (var key in str2Int.Keys.Take(siz))
+                    int nte = (int)probe.nte;
+                    foreach (var key in str2Int.Keys.Take(nte))
                     {
                         if (key == int2Str[str2Int[key]]) continue;
                         throw new Exception(key + " " + str2Int[key] + " " + int2Str[str2Int[key]]);
                     }
-                    foreach (var code in str2Int.Values.Take(siz))
+                    foreach (var code in str2Int.Values.Take(nte))
                     {
                         if (code == str2Int[int2Str[code]]) continue;
                         throw new Exception(code + " " + int2Str[code] + " " + str2Int[int2Str[code]]);
@@ -64,15 +66,23 @@ namespace P11_PlatformProperties2
                     int nte = (int) probe.nte;
 
                     // выберем nte случайных кодов из таблицы имён
-                    int[] codes =
+                    if (testingcodes == null)
+                    testingcodes =
                         Enumerable.Range(0, nte)
-                            .Select(i => rnd.Next(str2Int.Values.Count))
-                            .Select(i => str2Int.Values.ElementAt(i))
+                            .Select(i => rnd.Next(str2Int.Values.Count - 1))
+                            //.Select(i => str2Int.Values.ElementAt(i))
                             .ToArray();
+                    long sum = 0L;
                     sw.Restart();
-                    codes.Select(key => int2Str[key]).ToList();
+                    foreach (int key in testingcodes)
+                    {
+                        string s = int2Str[key];
+                        sum += s.Length;
+                    }
                     sw.Stop();
-                    probe.lod = sw.ElapsedMilliseconds;
+                    probe.sum = sum;
+                    probe.tim = sw.ElapsedMilliseconds;
+                    probe.tsk = "int2str";
                     res.WriteLine(probe.ToCSV());
                     Console.WriteLine("GetStringTime OK");
                 }
@@ -81,15 +91,26 @@ namespace P11_PlatformProperties2
                     int nte = (int) probe.nte;
                     rnd = new Random(777777777);
                     // выберем nte случайных строк из таблицы имён
+                    if (testingcodes == null || nte != testingcodes.Length)
+                        testingcodes =
+                            Enumerable.Range(0, nte)
+                                .Select(i => rnd.Next(str2Int.Values.Count - 1))
+                            //.Select(i => str2Int.Values.ElementAt(i))
+                                .ToArray();
                     string[] keys =
-                        Enumerable.Range(0, nte)
-                            .Select(i => rnd.Next(str2Int.Keys.Count))
-                            .Select(i => str2Int.Keys.ElementAt(i))
+                        testingcodes
+                            .Select(i => i.ToString())
                             .ToArray();
+                    long sum = 0L;
                     sw.Restart();
-                    keys.Select(key => str2Int[key]).ToList();
+                    foreach (string key in keys)
+                    {
+                        sum += str2Int[key];
+                    }
                     sw.Stop();
-                    probe.lod = sw.ElapsedMilliseconds;
+                    probe.sum = sum;
+                    probe.tsk = "str2int";
+                    probe.tim = sw.ElapsedMilliseconds;
                     res.WriteLine(probe.ToCSV());
                     Console.WriteLine("GetCodeTime OK");
                 }
