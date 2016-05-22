@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01_PlatformProperties", "P01_PlatformProperties\P01_PlatformProperties.csproj", "{EBF7CD17-CA66-4B5D-8D0B-98897686AD70}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDII", "SDII\SDII.csproj", "{004F4214-55DA-4598-AF5B-23F509761815}"
@@ -25,6 +27,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P11_PlatformProperties2", "P11_PlatformProperties2\P11_PlatformProperties2.csproj", "{400DA7E8-A1CA-4B9B-9AF5-7764ABDEDAEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P14_Universal_NameTable", "P14_Universal_NameTable\P14_Universal_NameTable.csproj", "{D93027C5-7823-4AF1-9117-51828032251B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P15_LinearBuffered_NameTable", "P15_LinearBuffered_NameTable\P15_LinearBuffered_NameTable.csproj", "{EC714571-3199-4799-B056-ACA08322C378}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +76,10 @@ Global
 		{D93027C5-7823-4AF1-9117-51828032251B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D93027C5-7823-4AF1-9117-51828032251B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D93027C5-7823-4AF1-9117-51828032251B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC714571-3199-4799-B056-ACA08322C378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC714571-3199-4799-B056-ACA08322C378}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC714571-3199-4799-B056-ACA08322C378}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC714571-3199-4799-B056-ACA08322C378}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -106,6 +106,11 @@ namespace P05_Phototeka3TabsInt
                 IndexArray = ind_arr_person_name,
                 KeyProducer = name_keyproducer
             };
+            tab_person.RegisterIndex(index_person);
+            tab_person.RegisterIndex(index_person_name);
+            tab_photo_doc.RegisterIndex(index_photo_doc);
+            tab_reflection.RegisterIndex(index_reflected);
+            tab_reflection.RegisterIndex(index_in_doc);
         }
         public void Clear() { tab_person.Clear(); tab_photo_doc.Clear(); tab_reflection.Clear(); }
         public void BuildPersons(IEnumerable<XElement> records)
@@ -218,10 +223,11 @@ namespace P05_Phototeka3TabsInt
                 if (ss.StartsWith(firstpartofname)) return 0;
                 return ss.CompareTo(firstpartofname);
             });
-            return query.Select(ent =>
+            return query
+                .Select(ent =>
             {
-                long off = (long)ent.Get();
-                entry.offset = off;
+                //long off = (long)ent.Get();
+                //entry.offset = off;
                 return entry.Get();
             })
             .Cast<object[]>()
