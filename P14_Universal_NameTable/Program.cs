@@ -71,7 +71,10 @@ namespace P14_Universal_NameTable
                             //.Select(i => nameTable.Codes.ElementAt(i))
                             .ToArray();
                     sw.Restart();
-                    codes.Select(code => nameTable.GetString(code)).ToList();
+                    foreach (var code in codes)
+                    {
+                        var result = nameTable.GetString(code).Length;
+                    }
                     sw.Stop();
                     probe.lod = sw.ElapsedMilliseconds;
                     res.WriteLine(probe.ToCSV());
