@@ -77,7 +77,9 @@ namespace P14_Universal_NameTable
                         sum += nameTable.GetString(code).Length;
 
                     sw.Stop();
-                    probe.lod = sw.ElapsedMilliseconds;
+                    probe.sum = sum;
+                    probe.tim = sw.ElapsedMilliseconds;
+                    probe.tsk = "int2str";
                     res.WriteLine(probe.ToCSV());
                     Console.WriteLine("GetStringTime OK");
                 }
@@ -98,7 +100,9 @@ namespace P14_Universal_NameTable
                         sum += nameTable.GetCode(key);
                     }
                     sw.Stop();
-                    probe.lod = sw.ElapsedMilliseconds;
+                    probe.sum = sum;
+                    probe.tsk = "str2int";
+                    probe.tim = sw.ElapsedMilliseconds;
                     res.WriteLine(probe.ToCSV());
                     Console.WriteLine("GetCodeTime OK");
                 }
