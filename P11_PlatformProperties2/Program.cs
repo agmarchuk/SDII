@@ -79,6 +79,7 @@ namespace P11_PlatformProperties2
                         string s = int2Str[key];
                         sum += s.Length;
                     }
+                    //sum += testingcodes.Select(k => int2Str[k].Length).Aggregate((sm, v) => sm + v);
                     sw.Stop();
                     probe.sum = sum;
                     probe.tim = sw.ElapsedMilliseconds;
