@@ -25,6 +25,7 @@ namespace P14_Universal_NameTable
             XElement xcommon = XElement.Load(path + "../common.xml");
             xcommon.Add(xcnf);
             Random rnd;
+            int[] testingcodes = null;
 
             foreach (XElement xprobe in xcnf.Elements())
             {
@@ -65,15 +66,16 @@ namespace P14_Universal_NameTable
                     int nte = (int)probe.nte;
 
                     // выберем nte случайных кодов из таблицы имён
-                    int[] codes =
-                        Enumerable.Range(0, nte)
-                            .Select(i => rnd.Next((int) nameTable.Count))
-                            //.Select(i => nameTable.Codes.ElementAt(i))
-                            .ToArray();
+                    if (testingcodes == null)
+                        testingcodes =
+                            Enumerable.Range(0, nte)
+                                .Select(i => rnd.Next((int)nameTable.Count - 1))
+                            //.Select(i => str2Int.Values.ElementAt(i))
+                                .ToArray();
                     sw.Restart();
                     long sum = 0L;
 
-                    foreach (var code in codes)
+                    foreach (var code in testingcodes)
                         sum += nameTable.GetString(code).Length;
 
                     sw.Stop();
@@ -88,10 +90,15 @@ namespace P14_Universal_NameTable
                     int nte = (int)probe.nte;
                     rnd = new Random(777777777);
                     // выберем nte случайных строк из таблицы имён
+                    if (testingcodes == null)
+                        testingcodes =
+                            Enumerable.Range(0, nte)
+                                .Select(i => rnd.Next((int)nameTable.Count - 1))
+                            //.Select(i => str2Int.Values.ElementAt(i))
+                                .ToArray();
                     string[] keys =
-                        Enumerable.Range(0, nte)
-                            .Select(i => rnd.Next((int)nameTable.Count))
-                            .Select(i => nameTable.Keys.ElementAt(i))
+                        testingcodes
+                            .Select(i => i.ToString())
                             .ToArray();
                     long sum = 0L;
                     sw.Restart();

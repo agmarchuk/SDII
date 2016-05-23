@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<tests>
-  <ProbeFrame sol="LoadAll" siz="1000" />
-  <ProbeFrame sol="TestCompositions" siz="1000" />
-  <ProbeFrame sol="GetStringTime" siz="1000" nte="1" />
-  <ProbeFrame sol="GetCodeTime" siz="1000" nte="1" />
+<tests siz="1000000">
+  <ProbeFrame sol="LoadAll" />
+  <!--<ProbeFrame sol="TestCompositions" siz="1000" />-->
+  <ProbeFrame sol="GetStringTime" nte="100000" />
+  <ProbeFrame sol="GetCodeTime" nte="100000" />
 </tests> 
