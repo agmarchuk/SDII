@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P14_Universal_NameTable", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P15_LinearBuffered_NameTable", "P15_LinearBuffered_NameTable\P15_LinearBuffered_NameTable.csproj", "{EC714571-3199-4799-B056-ACA08322C378}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalIndex", "..\Polar\UniversalIndex\UniversalIndex.csproj", "{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +82,10 @@ Global
 		{EC714571-3199-4799-B056-ACA08322C378}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC714571-3199-4799-B056-ACA08322C378}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC714571-3199-4799-B056-ACA08322C378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

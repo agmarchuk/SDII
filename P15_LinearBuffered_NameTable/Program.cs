@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -16,7 +17,7 @@ namespace P15_LinearBuffered_NameTable
         {
             string path = "../../";
             if (!Directory.Exists(path + "../Databases/name table universal")) Directory.CreateDirectory(path + "../Databases/name table universal");
-            NametableLinearBuffered nameTable = new NametableLinearBuffered(path + "../Databases/name table universal", 10) ;
+            NametableLinearBuffered nameTable = new NametableLinearBuffered(path + "../Databases/name table universal", 1000000) ;
             Console.WriteLine("Start P15_LinearBuffered_NameTable");
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
@@ -36,13 +37,6 @@ namespace P15_LinearBuffered_NameTable
                     sw.Restart();
                     int siz = (int)probe.siz;
                     nameTable.Load(siz, Enumerable.Range(0, siz).Select(i => i.ToString()));
-                    if (nameTable.cell_codes.Root.ElementValues().Cast<int>().All(code => code == -1))
-                        System.Console.WriteLine("error");
-                    for (int i = 0; i < nameTable.arrLength; i++)
-                    {
-                        if (nameTable.positionUsed[i] == ((int)nameTable.cell_codes.Root.Element(i).Get() != -1)) continue;
-                        throw new Exception("sdfsdf");
-                    }
                     sw.Stop();
                     probe.lod = sw.ElapsedMilliseconds;
                     res.WriteLine(probe.ToCSV());
@@ -50,16 +44,18 @@ namespace P15_LinearBuffered_NameTable
                 }
                 else if (probe.sol == "TestCompositions")
                 {
-                    int siz = (int)probe.siz;
+                    int siz = (int) probe.siz;
                     foreach (var key in nameTable.Keys.Take(siz))
                     {
                         if (key == nameTable.GetString(nameTable.GetCode(key))) continue;
-                        throw new Exception(key + " code:" + nameTable.GetCode(key) + " key:" + nameTable.GetString(nameTable.GetCode(key)));
+                        throw new Exception(key + " code:" + nameTable.GetCode(key) + " key:" +
+                                            nameTable.GetString(nameTable.GetCode(key)));
                     }
                     foreach (var code in nameTable.Codes.Take(siz))
                     {
                         if (code == nameTable.GetCode(nameTable.GetString(code))) continue;
-                        throw new Exception(code + " key:" + nameTable.GetString(code) + " code:" + nameTable.GetCode(nameTable.GetString(code)));
+                        throw new Exception(code + " key:" + nameTable.GetString(code) + " code:" +
+                                            nameTable.GetCode(nameTable.GetString(code)));
                     }
                     res.WriteLine(probe.ToCSV());
                     Console.WriteLine("TestCompositions OK");
@@ -110,6 +106,40 @@ namespace P15_LinearBuffered_NameTable
                     probe.tim = sw.ElapsedMilliseconds;
                     res.WriteLine(probe.ToCSV());
                     Console.WriteLine("GetCodeTime OK");
+                }
+                else if (probe.sol == "InseartPortion")
+                {
+                    int nte = (int) probe.nte;
+                    int existingCount = Math.Min(nte/2, (int) nameTable.Count);
+
+                    string[] newKeys =
+                        Enumerable.Range((int) nameTable.Count - existingCount, nte)
+                            .Select(i => i.ToString())
+                            .ToArray();
+                    long sum = 0L;
+                    sw.Restart();
+                  var  portionCoded = nameTable.InsertPortion(newKeys);
+                   var fff= nameTable.GetString(nameTable.GetCode("1001"));
+                    Console.WriteLine(fff);
+                    if (portionCoded.Keys.Distinct().Count()!=nte) 
+                        throw new Exception("portion count" + portionCoded.Values.Distinct().Count());
+                    if (portionCoded.Values.Distinct().Count() < nte)
+                        throw new Exception("portion count" + portionCoded.Values.Distinct().Count());
+                    foreach (var newKey in newKeys.Where(newKey => newKey != nameTable.GetString(nameTable.GetCode(newKey))))
+                        throw new Exception("portion " + newKey);
+                    foreach (var newKey in newKeys.Where(newKey => portionCoded[newKey] != nameTable.GetCode(newKey)))
+                        throw new Exception("portion " + newKey);
+                    foreach (var newKey in portionCoded.Keys.Where(newKey => newKey != nameTable.GetString(nameTable.GetCode(newKey))))
+                            throw new Exception("portion " + newKey);
+                    foreach (var newKey in portionCoded.Values.Where(newcode => newcode != nameTable.GetCode(nameTable.GetString(newcode))))
+                        throw new Exception("portion " + newKey);
+                    sum = nameTable.Count;
+                    sw.Stop();
+                    probe.sum = sum;
+                    probe.tsk = "InseartPortion";
+                    probe.tim = sw.ElapsedMilliseconds;
+                    res.WriteLine(probe.ToCSV());
+                    Console.WriteLine("InseartPortion OK");
                 }
             }
             res.Close();
