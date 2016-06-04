@@ -4,4 +4,5 @@
   <ProbeFrame sol="TestCompositions" siz="1000" />
   <ProbeFrame sol="GetStringTime" siz="1000" nte="1" />
   <ProbeFrame sol="GetCodeTime" siz="1000" nte="1" />
+  <ProbeFrame sol="InseartPortion" siz="1000" nte="1000" />
 </tests> 
