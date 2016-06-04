@@ -118,9 +118,8 @@ namespace P15_LinearBuffered_NameTable
                             .ToArray();
                     long sum = 0L;
                     sw.Restart();
-                  var  portionCoded = nameTable.InsertPortion(newKeys);
-                   var fff= nameTable.GetString(nameTable.GetCode("1001"));
-                    Console.WriteLine(fff);
+                    var portionCoded = nameTable.InsertPortion(newKeys);
+                    sw.Stop();
                     if (portionCoded.Keys.Distinct().Count()!=nte) 
                         throw new Exception("portion count" + portionCoded.Values.Distinct().Count());
                     if (portionCoded.Values.Distinct().Count() < nte)
@@ -134,7 +133,6 @@ namespace P15_LinearBuffered_NameTable
                     foreach (var newKey in portionCoded.Values.Where(newcode => newcode != nameTable.GetCode(nameTable.GetString(newcode))))
                         throw new Exception("portion " + newKey);
                     sum = nameTable.Count;
-                    sw.Stop();
                     probe.sum = sum;
                     probe.tsk = "InseartPortion";
                     probe.tim = sw.ElapsedMilliseconds;
