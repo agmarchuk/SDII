@@ -60,7 +60,7 @@ namespace P14_Universal_NameTable
                     res.WriteLine(probe.ToCSV());
                     Console.WriteLine("TestCompositions OK");
                 }
-                else if (probe.sol == "GetStringTime")
+                else if (probe.sol == "Code2StringTime")
                 {
                     rnd = new Random(777777777);
                     int nte = (int)probe.nte;
@@ -83,12 +83,12 @@ namespace P14_Universal_NameTable
                     probe.tim = sw.ElapsedMilliseconds;
                     probe.tsk = "int2str";
                     res.WriteLine(probe.ToCSV());
-                    Console.WriteLine("GetStringTime OK");
+                    Console.WriteLine("Code2StringTime OK");
                 }
-                else if (probe.sol == "GetCodeTime")
+                else if (probe.sol == "String2CodeTime")
                 {
                     int nte = (int)probe.nte;
-                    rnd = new Random(777777777);
+                    rnd = new Random(777777776);
                     // выберем nte случайных строк из таблицы имён
                     if (testingcodes == null)
                         testingcodes =
@@ -111,7 +111,7 @@ namespace P14_Universal_NameTable
                     probe.tsk = "str2int";
                     probe.tim = sw.ElapsedMilliseconds;
                     res.WriteLine(probe.ToCSV());
-                    Console.WriteLine("GetCodeTime OK");
+                    Console.WriteLine("String2CodeTime OK");
                 }
             }
             res.Close();

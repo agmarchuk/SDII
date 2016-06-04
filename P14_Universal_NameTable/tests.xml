@@ -2,6 +2,6 @@
 <tests siz="1000000">
   <ProbeFrame sol="LoadAll" />
   <!--<ProbeFrame sol="TestCompositions" siz="1000" />-->
-  <ProbeFrame sol="GetStringTime" nte="100000" />
-  <ProbeFrame sol="GetCodeTime" nte="100000" />
+  <ProbeFrame sol="String2CodeTime" nte="100000" />
+  <ProbeFrame sol="Code2StringTime" nte="100000" />
 </tests> 
