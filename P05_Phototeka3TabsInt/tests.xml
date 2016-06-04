@@ -3,7 +3,7 @@
   <!--
   -->
   <ProbeFrame tsk="LoadI" sol="Stan3TabsInt_load"/>
-  <ProbeFrame tsk="GetItemById" sol="Stan3TabsInt_SelectById" nte="1000" />
+  <ProbeFrame tsk="GetItemById" sol="Stan3TabsInt_SelectById" nte="100000" />
   <ProbeFrame tsk="SearchByName" sol="Stan3TabsInt_SearchByName" nte="1000" />
   <ProbeFrame tsk="GePortraitById" sol="Stan3TabsInt_GetRelationByPerson" nte="1000" />
 </tests> 
