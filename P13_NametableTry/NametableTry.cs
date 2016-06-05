@@ -54,7 +54,13 @@ namespace P13_NametableTry
             tab_person.RegisterIndex(index_person_name);
         }
         public void Clear() { tab_person.Clear(); }
-        public void Warmup() { tab_person.Warmup(); index_person.Warmup(); index_person_name.Warmup(); }
+
+        public void Warmup()
+        {
+            tab_person.Warmup();
+            index_person.Warmup();
+            index_person_name.Warmup();
+        }
         public void BuildTable(IEnumerable<XElement> records)
         {
             tab_person.Clear();

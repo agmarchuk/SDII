@@ -115,6 +115,9 @@ namespace P13_NametableTry
         public void Clear() { tab_person.Clear(); tab_photo_doc.Clear(); tab_reflection.Clear(); }
         public void BuildPersons(IEnumerable<XElement> records)
         {
+            index_person.FillInit();
+            index_person_name.FillInit();
+
             IEnumerable<object> flow = records
                 .Select(rec =>
                 {
@@ -124,9 +127,13 @@ namespace P13_NametableTry
                     return new object[] { code, name, age };
                 });
             tab_person.Fill(flow);
+
+            index_person.FillFinish();
+            index_person_name.FillFinish();
         }
         public void BuildPhoto_docs(IEnumerable<XElement> records)
         {
+            index_photo_doc.FillInit();
             IEnumerable<object> flow = records
                 .Select(rec =>
                 {
@@ -135,9 +142,13 @@ namespace P13_NametableTry
                     return new object[] { code, name };
                 });
             tab_photo_doc.Fill(flow);
+            index_photo_doc.FillFinish();
         }
         public void BuildReflections(IEnumerable<XElement> records)
         {
+            index_reflected.FillInit();
+            index_in_doc.FillInit();
+
             IEnumerable<object> flow = records
                 .Select(rec =>
                 {
@@ -147,10 +158,19 @@ namespace P13_NametableTry
                     return new object[] { code, reflected, in_doc };
                 });
             tab_reflection.Fill(flow);
+
+            index_reflected.FillFinish();
+            index_in_doc.FillFinish();
         }
         public void Build(IEnumerable<XElement> records)
         {
             this.Clear();
+            index_in_doc.FillInit();
+            index_photo_doc.FillInit();
+            index_person.FillInit();
+            index_person_name.FillInit();
+            index_reflected.FillInit();
+
             tab_person.Fill(new object[0]);
             tab_photo_doc.Fill(new object[0]);
             tab_reflection.Fill(new object[0]);
@@ -175,6 +195,11 @@ namespace P13_NametableTry
                     tab_reflection.AppendValue(new object[] { code, reflected, in_doc });
                 }
             }
+            index_in_doc.FillFinish();
+            index_person.FillFinish();
+            index_person_name.FillFinish();
+            index_photo_doc.FillFinish();
+            index_reflected.FillFinish();
         }
         // Построение индексов
         public void BuildIndexes()

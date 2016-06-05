@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <tests siz="1000000">
-  <!--<ProbeFrame sol="LoadAll" />-->
-  <!--<ProbeFrame sol="Code2String" nte="100000" />-->
+  <ProbeFrame sol="LoadAll" />
+  <ProbeFrame sol="Code2String" nte="100000" />
   <ProbeFrame sol="String2Code" nte="100000" />
 </tests> 

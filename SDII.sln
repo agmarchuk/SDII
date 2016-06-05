@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
+# Visual Studio 15
+VisualStudioVersion = 15.0.25302.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P01_PlatformProperties", "P01_PlatformProperties\P01_PlatformProperties.csproj", "{EBF7CD17-CA66-4B5D-8D0B-98897686AD70}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDII", "SDII\SDII.csproj", "{004F4214-55DA-4598-AF5B-23F509761815}"
@@ -34,7 +36,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolarDB x64", "..\Polar\Pol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversalIndex", "..\Polar\UniversalIndex\UniversalIndex.csproj", "{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P13_NametableTry", "P13_NametableTry\P13_NametableTry.csproj", "{B39F8CA7-0C88-4502-BC1E-344EC9EAB970}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P13_NametableTry", "P13_NametableTry\P13_NametableTry.csproj", "{8828DF57-CF68-4874-AB06-F4CF3D1D56FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -152,6 +154,16 @@ Global
 		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.x64|Any CPU.ActiveCfg = Release|Any CPU
+		{E4AB7A63-7B55-43E9-B1AA-C8E0F8AA87E3}.x86|Any CPU.ActiveCfg = Release|Any CPU
+		{8828DF57-CF68-4874-AB06-F4CF3D1D56FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8828DF57-CF68-4874-AB06-F4CF3D1D56FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8828DF57-CF68-4874-AB06-F4CF3D1D56FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8828DF57-CF68-4874-AB06-F4CF3D1D56FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8828DF57-CF68-4874-AB06-F4CF3D1D56FB}.x64|Any CPU.ActiveCfg = Release|Any CPU
+		{8828DF57-CF68-4874-AB06-F4CF3D1D56FB}.x64|Any CPU.Build.0 = Release|Any CPU
+		{8828DF57-CF68-4874-AB06-F4CF3D1D56FB}.x86|Any CPU.ActiveCfg = Release|Any CPU
+		{8828DF57-CF68-4874-AB06-F4CF3D1D56FB}.x86|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

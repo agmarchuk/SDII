@@ -69,7 +69,7 @@ namespace P13_NametableTry
                                 .ToArray();
                     sw.Restart();
                     long sum = 0L;
-
+                  //  nametable.Warmup();
                     //nametable.Clear();
                     foreach (var code in testingcodes)
                         sum += nametable.GetNameByCode(code).Length;
