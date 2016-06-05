@@ -17,7 +17,7 @@ namespace P15_LinearBuffered_NameTable
         {
             string path = "../../";
             if (!Directory.Exists(path + "../Databases/name table universal")) Directory.CreateDirectory(path + "../Databases/name table universal");
-            NametableLinearBuffered nameTable = new NametableLinearBuffered(path + "../Databases/name table universal", 1000000) ;
+            NametableLinearBuffered nameTable = new NametableLinearBuffered(path + "../Databases/name table universal") ;
             Console.WriteLine("Start P15_LinearBuffered_NameTable");
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
