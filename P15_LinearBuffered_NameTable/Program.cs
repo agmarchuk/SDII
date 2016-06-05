@@ -116,22 +116,26 @@ namespace P15_LinearBuffered_NameTable
                         Enumerable.Range((int) nameTable.Count - existingCount, nte)
                             .Select(i => i.ToString())
                             .ToArray();
+             
+                        
                     long sum = 0L;
                     sw.Restart();
                     var portionCoded = nameTable.InsertPortion(newKeys);
+                    Console.WriteLine(nameTable.GetCode("1000001"));
+                    Console.WriteLine(nameTable.GetString(1000001));
                     sw.Stop();
-                    if (portionCoded.Keys.Distinct().Count()!=nte) 
-                        throw new Exception("portion count" + portionCoded.Keys.Distinct().Count());
+                    if (portionCoded.Keys.Distinct().Count() < nte)
+                        throw new Exception("portion count " + portionCoded.Keys.Distinct().Count());
                     if (portionCoded.Values.Distinct().Count() < nte)
                         throw new Exception("portion count" + portionCoded.Values.Distinct().Count());
                     foreach (var newKey in newKeys.Where(newKey => newKey != nameTable.GetString(nameTable.GetCode(newKey))))
-                        throw new Exception("portion " + newKey);
+                        throw new Exception("key " + newKey+" code "+ nameTable.GetCode(newKey)+" getkey "+ nameTable.GetString(nameTable.GetCode(newKey)));
                     foreach (var newKey in newKeys.Where(newKey => portionCoded[newKey] != nameTable.GetCode(newKey)))
-                        throw new Exception("portion " + newKey);
+                        throw new Exception("key " + newKey + " code " + nameTable.GetCode(newKey) + " getkey " + nameTable.GetString(nameTable.GetCode(newKey)));
                     foreach (var newKey in portionCoded.Keys.Where(newKey => newKey != nameTable.GetString(nameTable.GetCode(newKey))))
-                            throw new Exception("portion " + newKey);
+                        throw new Exception("key " + newKey + " code " + nameTable.GetCode(newKey) + " getkey " + nameTable.GetString(nameTable.GetCode(newKey)));
                     foreach (var newKey in portionCoded.Values.Where(newcode => newcode != nameTable.GetCode(nameTable.GetString(newcode))))
-                        throw new Exception("portion " + newKey);
+                        throw new Exception("code " + newKey + " key " + nameTable.GetString(newKey) + " getcode " + nameTable.GetCode(nameTable.GetString(newKey)));
                     sum = nameTable.Count;
                     probe.sum = sum;
                     probe.tsk = "InseartPortion";
