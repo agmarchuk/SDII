@@ -67,9 +67,9 @@ namespace P13_NametableTry
                             Enumerable.Range(0, nte)
                                 .Select(i => rnd.Next((int)probe.siz - 1))
                                 .ToArray();
+                    nametable.Warmup();
                     sw.Restart();
                     long sum = 0L;
-                  //  nametable.Warmup();
                     //nametable.Clear();
                     foreach (var code in testingcodes)
                         sum += nametable.GetNameByCode(code).Length;
@@ -97,7 +97,7 @@ namespace P13_NametableTry
                         testingcodes
                             .Select(i => i.ToString())
                             .ToArray();
-                    //nametable.Warmup();
+                    nametable.Warmup();
                     long sum = 0L;
                     sw.Restart();
                     int cnt = 0;
