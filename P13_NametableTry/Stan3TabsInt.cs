@@ -165,12 +165,6 @@ namespace P13_NametableTry
         public void Build(IEnumerable<XElement> records)
         {
             this.Clear();
-            index_in_doc.FillInit();
-            index_photo_doc.FillInit();
-            index_person.FillInit();
-            index_person_name.FillInit();
-            index_reflected.FillInit();
-
             tab_person.Fill(new object[0]);
             tab_photo_doc.Fill(new object[0]);
             tab_reflection.Fill(new object[0]);
@@ -204,11 +198,11 @@ namespace P13_NametableTry
         // Построение индексов
         public void BuildIndexes()
         {
-            ind_arr_person.Build();
-            ind_arr_photo_doc.Build();
-            ind_arr_reflected.Build();
-            ind_arr_in_doc.Build();
-            ind_arr_person_name.Build();
+            index_person.Build();
+            index_photo_doc.Build();
+            index_reflected.Build();
+            index_in_doc.Build();
+            index_person_name.Build();
         }
         public object[] GetPersonByCode(int code)
         {

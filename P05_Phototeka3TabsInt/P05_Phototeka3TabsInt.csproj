@@ -21,6 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,10 +35,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PolarDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDII\DLLs\PolarDB.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,10 +42,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UniversalIndex, Version=1.0.0.2, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDII\DLLs\UniversalIndex.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -56,6 +49,14 @@
     <Compile Include="Stan3TabsInt.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Polar\PolarDB\PolarDB x64.csproj">
+      <Project>{c572f366-4fee-4f67-be56-b00c0992052f}</Project>
+      <Name>PolarDB x64</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Polar\UniversalIndex\UniversalIndex x64.csproj">
+      <Project>{514a43b9-30fd-4a4f-927a-55fcda532fab}</Project>
+      <Name>UniversalIndex x64</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SDII\SDII.csproj">
       <Project>{004f4214-55da-4598-af5b-23f509761815}</Project>
       <Name>SDII</Name>

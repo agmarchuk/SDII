@@ -25,9 +25,9 @@ namespace P05_Phototeka3TabsInt
             Random rnd = new Random(777777777);
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             string dbpath = path + "../Databases/P05_Phototeka3TabsInt/";
-
+            
             Stan3TabsInt tabs = new Stan3TabsInt(dbpath);
-
+                    tabs.TestCounts();
             foreach (XElement xprobe in xcnf.Elements())
             {
                 ProbeFrame probe = new ProbeFrame(xprobe.AncestorsAndSelf().Attributes());
@@ -57,6 +57,7 @@ namespace P05_Phototeka3TabsInt
                     probe.ndx = sw.ElapsedMilliseconds;
                     Console.WriteLine("BuildIndexes ok. Duration={0}", sw.ElapsedMilliseconds); // 10000: 14.9 сек.
                     res.WriteLine(probe.ToCSV());
+                    tabs.TestCounts();
                 }
                 else if (probe.sol == "Stan3TabsInt_SelectById")
                 {

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<tests siz="1000000">
+<tests siz="10000">
   <ProbeFrame sol="LoadAll" />
-  <!--<ProbeFrame sol="TestCompositions"  />
-  <ProbeFrame sol="String2CodeTime" nte="100000" />
+  <ProbeFrame sol="TestCompositions"  />
+  <!--<ProbeFrame sol="String2CodeTime" nte="100000" />
   <ProbeFrame sol="Code2StringTime" nte="100000" />-->
   <ProbeFrame sol="InseartPortion" nte="1000" />
 </tests> 
