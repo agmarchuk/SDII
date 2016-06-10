@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x86|AnyCPU'">
+    <OutputPath>bin\x86\</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworkProfile />
+    <Optimize>true</Optimize>
+    <Prefer32Bit>true</Prefer32Bit>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectGuid>{EC714571-3199-4799-B056-ACA08322C378}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Polar\PolarDB\PolarDB.csproj">
+      <Project>{e418d12c-9027-4292-aab4-d8130c6e3829}</Project>
+      <Name>PolarDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Polar\UniversalIndex\UniversalIndex.csproj">
+      <Project>{e4ab7a63-7b55-43e9-b1aa-c8e0f8aa87e3}</Project>
+      <Name>UniversalIndex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SDII\SDII.csproj">
+      <Project>{004f4214-55da-4598-af5b-23f509761815}</Project>
+      <Name>SDII</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tests.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
