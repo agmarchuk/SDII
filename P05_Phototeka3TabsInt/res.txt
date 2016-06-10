@@ -181,3 +181,6 @@ GePortraitById,Stan3TabsInt_GetRelationByPerson,,sergey,40000,1000,-1,-1,-1,205,
 GetItemById,Stan3TabsInt_SelectById,,sergey,40000,100000,-1,-1,-1,1965,-1,-1,5972693,2016-06-08T16:10:59,""
 SearchByName,Stan3TabsInt_SearchByName,,sergey,40000,1000,-1,-1,-1,418,-1,-1,35400,2016-06-08T16:11:01,""
 GePortraitById,Stan3TabsInt_GetRelationByPerson,,sergey,40000,1000,-1,-1,-1,224,-1,-1,6098,2016-06-08T16:11:02,""
+GetItemById,Stan3TabsInt_SelectById,,sergey,40000,100000,-1,-1,-1,1965,-1,-1,5972693,2016-06-10T12:47:33,""
+SearchByName,Stan3TabsInt_SearchByName,,sergey,40000,1000,-1,-1,-1,459,-1,-1,35400,2016-06-10T12:47:35,""
+GePortraitById,Stan3TabsInt_GetRelationByPerson,,sergey,40000,1000,-1,-1,-1,1330,-1,-1,6098,2016-06-10T12:47:35,""
