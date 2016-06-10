@@ -17,6 +17,8 @@
     <Reference Include="PolarDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDII\DLLs\PolarDB.dll</HintPath>
+    <Reference Include="PolarDB">
+      <HintPath>..\..\..\..\..\..\Users\Admin\Source\Repos\next\next\SDII\DLLs\PolarDB.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -27,6 +29,8 @@
     <Reference Include="UniversalIndex, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDII\DLLs\UniversalIndex.dll</HintPath>
+    <Reference Include="UniversalIndex">
+      <HintPath>..\..\..\..\..\..\Users\Admin\Source\Repos\next\next\SDII\DLLs\UniversalIndex.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
