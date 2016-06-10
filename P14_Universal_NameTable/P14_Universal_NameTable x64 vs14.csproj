@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x64|x64'">
+    <RootNamespace>P14_Universal_NameTable</RootNamespace>
+    <ProjectGuid>{D93027C5-7823-4AF1-9117-51828032251B}</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworkProfile />
+    <OutputPath>bin\x64\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <Optimize>true</Optimize>
+    <Prefer32Bit>false</Prefer32Bit>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.HashFunction.BernsteinHash">
+      <HintPath>..\SDII\DLLs64\System.Data.HashFunction.BernsteinHash.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.HashFunction.Core">
+      <HintPath>..\SDII\DLLs64\System.Data.HashFunction.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.HashFunction.Interfaces">
+      <HintPath>..\SDII\DLLs64\System.Data.HashFunction.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.HashFunction.SpookyHash">
+      <HintPath>..\SDII\DLLs64\System.Data.HashFunction.SpookyHash.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Polar\UniversalIndex\UniversalIndex x64.csproj">
+      <Project>{514a43b9-30fd-4a4f-927a-55fcda532fab}</Project>
+      <Name>UniversalIndex x64</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SDII\SDII x64.csproj">
+      <Project>{004f4214-55da-4598-af5b-23f509761815}</Project>
+      <Name>SDII x64</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tests.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
