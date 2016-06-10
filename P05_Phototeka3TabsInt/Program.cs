@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using Polar.Data;
 using SDII;
-using PolarDB;
 
 namespace P05_Phototeka3TabsInt
 {

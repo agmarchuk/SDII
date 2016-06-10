@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.WebSockets;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using SDII;
-using SimpleTripleStore;
 using UniversalIndex.Text_index;
 
 namespace P04_SimpleTripleStore_Phototeka

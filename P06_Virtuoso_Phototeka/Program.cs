@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using OpenLink.Data.Virtuoso;
-using Polar.Data;
 using RDFCommon.OVns;
-using sema2012m;
 using SDII;
 using VirtuosoTest;
 

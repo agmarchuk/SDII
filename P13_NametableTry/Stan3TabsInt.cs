@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using PolarDB;
 using UniversalIndex;
@@ -42,6 +40,7 @@ namespace P13_NametableTry
                 Scale = null
             };
             ind_arr_person.Scale = new ScaleCell(path + "person_ind") { IndexCell = ind_arr_person.IndexCell };
+            ind_arr_person.Scale.Build();
             index_person = new IndexDynamic<int, IndexKeyImmutable<int>>(true)
             {
                 Table = tab_person,
@@ -57,6 +56,7 @@ namespace P13_NametableTry
                 Scale = null
             };
             ind_arr_photo_doc.Scale = new ScaleCell(path + "photo_doc_ind") { IndexCell = ind_arr_photo_doc.IndexCell };
+            ind_arr_photo_doc.Scale.Build();
             index_photo_doc = new IndexDynamic<int, IndexKeyImmutable<int>>(true)
             {
                 Table = tab_photo_doc,
@@ -72,6 +72,7 @@ namespace P13_NametableTry
                 Scale = null
             };
             ind_arr_reflected.Scale = new ScaleCell(path + "reflected_ind") { IndexCell = ind_arr_reflected.IndexCell };
+            ind_arr_reflected.Scale.Build();
             index_reflected = new IndexDynamic<int, IndexKeyImmutable<int>>(false)
             {
                 Table = tab_reflection,
@@ -87,6 +88,7 @@ namespace P13_NametableTry
                 Scale = null
             };
             ind_arr_in_doc.Scale = new ScaleCell(path + "in_doc_ind") { IndexCell = ind_arr_in_doc.IndexCell };
+            ind_arr_in_doc.Scale.Build();
             index_in_doc = new IndexDynamic<int, IndexKeyImmutable<int>>(false)
             {
                 Table = tab_reflection,
@@ -100,6 +102,8 @@ namespace P13_NametableTry
                 KeyProducer = name_keyproducer,
                 Scale = null
             };
+            ind_arr_person_name.Scale = new ScaleCell(path + "personname_ind") {IndexCell = ind_arr_in_doc.IndexCell};
+            ind_arr_person_name.Scale.Build();
             index_person_name = new IndexDynamic<string, IndexViewImmutable<string>>(false)
             {
                 Table = tab_person,
