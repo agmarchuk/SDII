@@ -13,7 +13,7 @@ namespace P06_Virtuoso_Phototeka
     {
         static void Main(string[] args)
         {
-            string path = "../../";
+            string path = ProjectDirectory.GetProjectDirectory();
             Console.WriteLine("Start TestGenerator");
             TextWriter res = new StreamWriter(new FileStream(path + "res.txt", FileMode.Append, FileAccess.Write));
             XElement xcnf = XElement.Load(path + "tests.xml");

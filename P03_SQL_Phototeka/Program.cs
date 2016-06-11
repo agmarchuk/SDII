@@ -11,7 +11,7 @@ namespace P03_SQL_Phototeka
         public static void Main()
         {
             Console.WriteLine("Start TestGenerator");
-            string path = "../../";
+            string path = ProjectDirectory.GetProjectDirectory();
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
             TextWriter res = new StreamWriter(new FileStream(path + "res.txt", FileMode.Append, FileAccess.Write));
             XElement xcnf = XElement.Load(path + "tests.xml");

@@ -2,7 +2,7 @@
 <tests siz="40000">
  <!--
   -->
- <!--<ProbeFrame tsk="LoadI" sol="simpleTripleStore_load"/>-->
+ <ProbeFrame tsk="LoadI" sol="simpleTripleStore_load"/>
   <ProbeFrame tsk="GetItemById" sol="simpleTripleStore_SelectById" nte="1000" />
   <ProbeFrame tsk="SearchByName" sol="simpleTripleStore_SearchByName" nte="10" />
   <ProbeFrame tsk="GePortraitById" sol="simpleTripleStore_GetRelationByPerson" nte="1000" />
