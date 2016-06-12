@@ -11,7 +11,7 @@ namespace P14_Universal_NameTable
     {
         static void Main(string[] args)
         {
-            string path = "../../";
+            string path = ProjectDirectory.GetProjectDirectory();
             if (!Directory.Exists(path + "../Databases/name table universal")) Directory.CreateDirectory(path + "../Databases/name table universal");
             NameTableUniversal nameTable=new NameTableUniversal(path + "../Databases/name table universal");
             Console.WriteLine("Start P14_Universal_NameTable");

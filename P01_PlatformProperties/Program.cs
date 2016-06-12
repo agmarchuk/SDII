@@ -13,7 +13,7 @@ namespace P01_PlatformProperties
         {
             Console.WriteLine("Start P01_PlatformPreperties");
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            string path = @"../../";
+            string path = ProjectDirectory.GetProjectDirectory();
             TextWriter res = new StreamWriter(new FileStream(path + "res.txt", FileMode.Append, FileAccess.Write));
             XElement xcnf = XElement.Load(path + "tests.xml");
             XElement xcommon = XElement.Load(path + "../common.xml");

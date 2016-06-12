@@ -11,7 +11,7 @@ namespace P04_SimpleTripleStore_Phototeka
     {
         private static void Main(string[] args)
         {
-            string path = "../../";
+            string path = ProjectDirectory.GetProjectDirectory();
             if (!Directory.Exists(path+ "../Databases/simple triple store")) Directory.CreateDirectory(path+ "../Databases/simple triple store");
             Console.WriteLine("Start TestGenerator");
             TextWriter res = new StreamWriter(new FileStream(path + "res.txt", FileMode.Append, FileAccess.Write));

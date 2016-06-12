@@ -16,7 +16,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -99,7 +99,7 @@
       <Name>PolarDB</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Polar\UniversalIndex\UniversalIndex.csproj">
-      <Project>{e4ab7a63-7b55-43e9-b1aa-c8e0f8aa87e3}</Project>
+      <Project>{a9af4a0a-5583-4b18-a434-07d7466bb277}</Project>
       <Name>UniversalIndex</Name>
     </ProjectReference>
     <ProjectReference Include="..\SDII\SDII.csproj">

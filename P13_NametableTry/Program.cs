@@ -11,7 +11,7 @@ namespace P13_NametableTry
         public static void Main()
         {
             Console.WriteLine("Start P13_NametableTry");
-            string path = "../../";
+            string path = ProjectDirectory.GetProjectDirectory();
             string dpath = path + "../Databases/p13nametabletry";
             if (!Directory.Exists(dpath)) Directory.CreateDirectory(dpath);
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();

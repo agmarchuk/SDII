@@ -11,7 +11,7 @@ namespace P06_Virtuoso
         public static void Main()
         {
             Console.WriteLine("Start P06_Virtuoso");
-            string path = "../../";
+            string path = ProjectDirectory.GetProjectDirectory();
             TextWriter res = new StreamWriter(new FileStream(path + "res.txt", FileMode.Append, FileAccess.Write));
             XElement xcnf = XElement.Load(path + "tests.xml");
             XElement xcommon = XElement.Load(path + "../common.xml");

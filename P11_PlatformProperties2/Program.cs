@@ -13,7 +13,7 @@ namespace P11_PlatformProperties2
         {
             Console.WriteLine("Start P11_PlatformPreperties2");
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            string path = @"../../";
+            string path = ProjectDirectory.GetProjectDirectory();
             TextWriter res = new StreamWriter(new FileStream(path + "res.txt", FileMode.Append, FileAccess.Write));
             XElement xcnf = XElement.Load(path + "tests.xml");
             XElement xcommon = XElement.Load(path + "../common.xml");
