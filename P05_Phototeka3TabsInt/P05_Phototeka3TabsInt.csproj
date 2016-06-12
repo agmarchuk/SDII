@@ -89,15 +89,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="res.txt" />
-    <Content Include="tests.xml" />
+    <Content Include="tests.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Polar\PolarDB\PolarDB.csproj">
-      <Project>{779406f5-9c39-4eee-aae9-3b511cb9d4a7}</Project>
+      <Project>{e418d12c-9027-4292-aab4-d8130c6e3829}</Project>
       <Name>PolarDB</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Polar\UniversalIndex\UniversalIndex.csproj">
-      <Project>{a9af4a0a-5583-4b18-a434-07d7466bb277}</Project>
+      <Project>{e4ab7a63-7b55-43e9-b1aa-c8e0f8aa87e3}</Project>
       <Name>UniversalIndex</Name>
     </ProjectReference>
     <ProjectReference Include="..\SDII\SDII.csproj">
