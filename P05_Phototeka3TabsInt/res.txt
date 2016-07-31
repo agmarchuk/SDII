@@ -219,3 +219,7 @@ LoadI,Stan3TabsInt_load,,myWork16G64W,40000,0,7047,2477,-1,-1,-1,-1,0,2016-06-12
 GetItemById,Stan3TabsInt_SelectById,,myWork16G64W,40000,100000,-1,-1,-1,3383,-1,-1,5972693,2016-06-12T11:20:02,""
 SearchByName,Stan3TabsInt_SearchByName,,myWork16G64W,40000,1000,-1,-1,-1,380,-1,-1,35400,2016-06-12T11:20:06,""
 GePortraitById,Stan3TabsInt_GetRelationByPerson,,myWork16G64W,40000,1000,-1,-1,-1,310,-1,-1,6098,2016-06-12T11:20:06,""
+LoadI,Stan3TabsInt_load,,dellSyp4G64,40000,0,4617,6940,-1,-1,-1,-1,0,2016-07-25T08:05:32,""
+GetItemById,Stan3TabsInt_SelectById,,dellSyp4G64,40000,100000,-1,-1,-1,6999,-1,-1,5972693,2016-07-25T08:05:44,""
+SearchByName,Stan3TabsInt_SearchByName,,dellSyp4G64,40000,1000,-1,-1,-1,857,-1,-1,35400,2016-07-25T08:05:51,""
+GePortraitById,Stan3TabsInt_GetRelationByPerson,,dellSyp4G64,40000,1000,-1,-1,-1,666,-1,-1,6098,2016-07-25T08:05:52,""
