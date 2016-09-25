@@ -12,7 +12,7 @@ int comp2(_int64 a, _int64 b)
 {
 	return a - b;
 }
-int main()
+int main1()
 {
 	clock_t start, finish;
 

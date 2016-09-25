@@ -18,7 +18,7 @@ namespace P01_PlatformProperties
             XElement xcnf = XElement.Load(path + "tests.xml");
             XElement xcommon = XElement.Load(path + "../common.xml");
             xcommon.Add(xcnf);
-            Random rnd;
+            Random rnd = new Random();
 
 
             foreach (XElement xprobe in xcnf.Elements())
@@ -31,8 +31,9 @@ namespace P01_PlatformProperties
                     sw.Restart();
                     int siz = (int)probe.siz;
                     long[] arr = Enumerable.Range(0, siz)
-                        .Select(i => (long)(siz-i-1))
+                        //.Select(i => (long)(siz-i-1))
                         //.Select(i => (long)(i))
+                        .Select(i => (long)rnd.Next(siz + siz))
                         .ToArray();
                     sw.Stop();
                     probe.lod = sw.ElapsedMilliseconds;
@@ -44,7 +45,7 @@ namespace P01_PlatformProperties
                     sw.Stop();
                     probe.ndx = sw.ElapsedMilliseconds;
 
-                    Console.WriteLine("Сортировка OK");
+                    Console.WriteLine("Сортировка OK {0} ms siz={1}", sw.ElapsedMilliseconds, arr.Length);
 
                     long ssum = 0;
                     sw.Restart();
