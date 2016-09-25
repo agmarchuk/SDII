@@ -7,6 +7,10 @@
 #include <sys/timeb.h>
 #include <algorithm>
 #include <vector>
+#using <System.dll>
+
+using namespace System;
+using namespace System::Diagnostics;
 //#define NMAX 4000000
 //using namespace std;
 //int arr[NMAX];
@@ -50,61 +54,36 @@ public:
 
 };
 
-int main0()
+int main()
 {
-	clock_t start, finish;
+
 	printf("Start P01_PlatformPreperties\n");
 
-	ProbeFrame probe;
-
-
-
-	struct _timeb timebuffer;
-	char timeline[26];
-	errno_t err;
-	time_t time1;
-
-	_ftime_s(&timebuffer);
-
-	time1 = timebuffer.time;
-	printf("Seconds since midnight, January 1, 1970 (UTC): %I64d\n", time1);
-
-	err = ctime_s(timeline, 26, &(timebuffer.time));
-	if (err)
-	{
-		printf("Invalid argument to ctime_s. ");
-	}
-	//printf("The time is %.19s.%hu %s", timeline, timebuffer.millitm,
-	//	&timeline[20]);
-	printf("The time is %s", &timeline[0]);
-
-	start = clock();
 
 	char *sol;
 	int siz;
-	int nte;
+	//int nte;
 
 	siz = 50000000; //00;
-	nte = 10000000;
-	long long *arr;
-	arr = new long long[siz];
-	for (int i = 0; i < siz; i++) arr[i] = siz - i;
-	finish = clock();
-	printf("duration = %d\n", (finish - start));
+	//nte = 10000000;
 
-	start = clock();
+		long long *arr;
+	arr = new long long[siz];
+	auto netarray = gcnew array<long long>(siz);
+	for (int i = 0; i < siz; i++) arr[i] = netarray[i]= siz - i;
+	printf("Sort\n");
+	auto stopWatch = Stopwatch::StartNew();
 	std::sort(arr, &arr[siz - 1]);
+	stopWatch->Stop();
+	printf("std duration = %d\n", stopWatch->ElapsedMilliseconds);
+
+	stopWatch = Stopwatch::StartNew();	
 	//qsort(arr, siz, sizeof(long long), compare);
 	//сортирую весь массив
-	finish = clock();
-	printf("duration = %d\n", (finish - start));
-
-	//start = clock();
-	//sort(arr, arr + NMAX, comp);
-	////сортирую массив по компаратору
-	//finish = clock();
-	//printf("duration = %d\n", (finish - start));
-
+	Array::Sort(netarray);
+	stopWatch->Stop();
+	printf(".net duration = %d\n", stopWatch->ElapsedMilliseconds);
+	
 	return 0;
 }
 
