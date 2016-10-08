@@ -33,7 +33,7 @@ namespace P14_Universal_NameTable
                     // Загрузка
                     sw.Restart();
                     int siz = (int)probe.siz;
-                    nameTable.Load(siz, Enumerable.Range(0, siz).Select(i=> i.ToString()));
+                    nameTable.Expand(siz, Enumerable.Range(0, siz).Select(i=> i.ToString()));
                     nameTable.BuildIndexes();
                     nameTable.BuildScale();
                     sw.Stop();

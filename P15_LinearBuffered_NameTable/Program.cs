@@ -33,7 +33,7 @@ namespace P15_LinearBuffered_NameTable
                     // Загрузка
                     sw.Restart();
                     int siz = (int)probe.siz;
-                    nameTable.Load(siz, Enumerable.Range(0, siz).Select(i => i.ToString()));
+                    nameTable.Expand(siz, Enumerable.Range(0, siz).Select(i => i.ToString()));
                     sw.Stop();
                     probe.lod = sw.ElapsedMilliseconds;
                     res.WriteLine(probe.ToCSV());

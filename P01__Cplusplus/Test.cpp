@@ -14,6 +14,7 @@ int comp2(_int64 a, _int64 b)
 }
 int main1()
 {
+	printf("sorted arr\n");
 	clock_t start, finish;
 
 	for (int i = 0; i < NMAX; i++) arr2[i] = NMAX - i;

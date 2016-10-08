@@ -224,5 +224,10 @@ pip-log.txt
 /P03_SQL_Phototeka/TestPhototekaDataSet.xss
 /P03_SQL_Phototeka/TestPhototekaDataSet.Designer.cs
 /Databases
+<<<<<<< HEAD
 /*.db
 /Common.xml
+=======
+/SDII.VC.opendb
+>>>>>>> 94edc8fb1c659e737d6eaeb154f6949781b72946
+/SDII.VC.VC.opendb
